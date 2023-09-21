@@ -6,12 +6,17 @@ import { COLORS, SIZES } from "../../../constants"
 import PopularJobCard from "../../common/cards/popular/PopularJobCard"
 
 import styles from "./popularjobs.style"
+import useFetch from "../../../hooks/useFetch"
+
+const endpoint = "search"
+const query = { query: "React developer", num_pages: 1 }
 
 const PopularJobs = () => {
     const router = useRouter()
 
-    const isLoading = false
-    const hasError = false
+    const { data, isLoading, error } = useFetch(endpoint, query)
+
+    console.log(data)
 
     return (
         <View style={styles.container}>
@@ -25,11 +30,11 @@ const PopularJobs = () => {
             <View style={styles.cardsContainer}>
                 {isLoading && <ActivityIndicator size="large" colors={COLORS.primary} />}
 
-                {!isLoading && hasError && <Text>Something went wrong</Text>}
+                {!isLoading && error && <Text style={{ color: "red", padding: 6 }}>Something went wrong</Text>}
 
-                {!isLoading && !hasError && (
+                {!isLoading && !error && (
                     <FlatList
-                        data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                        data={data}
                         renderItem={({ item }) => <PopularJobCard item={item} />}
                         keyExtractor={(item) => item?.job_id}
                         contentContainerStyle={{ columnGap: SIZES.medium }}
