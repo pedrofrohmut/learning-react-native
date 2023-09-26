@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   contentBox: {
     marginVertical: SIZES.small,
   },
-  contextText: {
+  contentText: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
     fontFamily: FONT.regular,
