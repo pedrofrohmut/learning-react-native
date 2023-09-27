@@ -6,23 +6,23 @@ import * as SplashScreen from "expo-splash-screen"
 SplashScreen.preventAutoHideAsync()
 
 const Layout = () => {
-    const [fontsLoaded] = useFonts({
-        DBBold: require("../assets/fonts/DMSans-Bold.ttf"),
-        DBMedium: require("../assets/fonts/DMSans-Medium.ttf"),
-        DBRegular: require("../assets/fonts/DMSans-Regular.ttf")
+    const [fontsLoaded, fontError] = useFonts({
+        "DMBold": require("../assets/fonts/DMSans-Bold.ttf"),
+        "DMMedium": require("../assets/fonts/DMSans-Medium.ttf"),
+        "DMRegular": require("../assets/fonts/DMSans-Regular.ttf")
     })
 
     const onLayoutRootView = useCallback(async () => {
-        if (fontsLoaded) {
-            SplashScreen.hideAsync()
+        if (fontsLoaded || fontError) {
+            await SplashScreen.hideAsync()
         }
-    }, [fontsLoaded])
+    }, [fontsLoaded, fontError])
 
-    if (!fontsLoaded) {
+    if (!fontsLoaded && !fontError) {
         return null
     }
 
-    return <Stack />
+    return <Stack onLayout={onLayoutRootView} />
 }
 
 export default Layout
