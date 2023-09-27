@@ -16,8 +16,6 @@ const PopularJobs = () => {
 
     const { data, isLoading, error } = useFetch(endpoint, query)
 
-    console.log(data)
-
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -30,7 +28,9 @@ const PopularJobs = () => {
             <View style={styles.cardsContainer}>
                 {isLoading && <ActivityIndicator size="large" colors={COLORS.primary} />}
 
-                {!isLoading && error && <Text style={{ color: "red", padding: 6 }}>Something went wrong</Text>}
+                {!isLoading && error && (
+                    <Text style={{ color: "red", padding: 6 }}>Something went wrong</Text>
+                )}
 
                 {!isLoading && !error && (
                     <FlatList
