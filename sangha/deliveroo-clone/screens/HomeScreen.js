@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, TextInput } from "react-native"
+import { ScrollView, View, Text, SafeAreaView, Image, TextInput } from "react-native"
 import { useLayoutEffect } from "react"
 import { useNavigation } from "@react-navigation/native"
 import {
@@ -7,6 +7,7 @@ import {
     UserIcon,
     MagnifyingGlassIcon
 } from "react-native-heroicons/outline"
+import Categories from "../components/Categories"
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -40,6 +41,12 @@ const HomeScreen = () => {
                 </View>
                 <AdjustmentsVerticalIcon color="#00ccbb" />
             </View>
+
+            {/* Body */}
+            <ScrollView style={css.bodyScrollView}>
+                {/* Categories */}
+                <Categories />
+            </ScrollView>
         </SafeAreaView>
     )
 }
@@ -87,6 +94,9 @@ const css = {
     },
     searchIcon: {
         marginRight: "1rem"
+    },
+    bodyScrollView: {
+        backgroundColor: "#f1f1f1"
     }
 }
 
