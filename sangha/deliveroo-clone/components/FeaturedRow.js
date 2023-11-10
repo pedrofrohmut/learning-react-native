@@ -1,8 +1,43 @@
 import { ScrollView, Text, View } from "react-native"
 import { ArrowRightIcon } from "react-native-heroicons/solid"
 import RestaurantCard from "./RestaurantCard"
+import { useEffect, useState } from "react"
+import sanityClient from "../sanity"
+
+const query = `
+* [_type == "featured" && _id == $id] {
+    Restaurants[] -> {
+        _id,
+        name,
+        image,
+        rating,
+        type -> {
+            name
+        },
+        address,
+        short_description,
+        dishes[] -> {
+            ...
+        },
+        lat,
+        long
+    }
+} [0]
+`
 
 const FeaturedRow = ({ id, title, description }) => {
+    const [restaurants, setRestaurants] = useState([])
+
+    useEffect(() => {
+        sanityClient.fetch(query, { id: id }).then(data => {
+            console.log("Id", id)
+            console.log("Restaurant by id", data)
+            setRestaurants(data?.Restaurants)
+        })
+    }, [])
+
+    console.log("Restaurants", restaurants)
+
     return (
         <View style={css.container}>
             {/* Title */}
@@ -21,18 +56,21 @@ const FeaturedRow = ({ id, title, description }) => {
                 style={css.outerScrollView}
                 showsHorizontalScrollIndicator={true}
             >
-                <RestaurantCard
-                    id={123}
-                    imageUrl="https://links.papareact.com/gn7"
-                    title="Yo! Sushi"
-                    rating={4.5}
-                    genre="Japanese"
-                    address="123, Main St."
-                    shortDescription="This is a Test description"
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                />
+                {restaurants?.map((restaurant) => (
+                    <RestaurantCard
+                        key={restaurant._id}
+                        id={restaurant._id}
+                        title={restaurant.name}
+                        imageUrl={restaurant.image}
+                        rating={restaurant.rating}
+                        genre={restaurant.type?.name}
+                        address={restaurant.address}
+                        shortDescription={restaurant.short_description}
+                        dishes={restaurant.dishes}
+                        long={restaurant.long}
+                        lat={restaurant.lat}
+                    />
+                ))}
             </ScrollView>
         </View>
     )
@@ -57,7 +95,7 @@ const css = {
     },
     innerScrollView: {
         paddingHorizontal: 15,
-        paddingVertical: 15,
+        paddingVertical: 15
     },
     outerScrollView: {
         paddingTop: "1rem"
