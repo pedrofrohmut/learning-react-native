@@ -2,14 +2,41 @@ import { Image, Text, TouchableOpacity, View } from "react-native"
 import { MapPinIcon } from "react-native-heroicons/outline"
 import { StarIcon } from "react-native-heroicons/solid"
 import { urlFor } from "../sanity"
+import { useNavigation } from "@react-navigation/native"
 
-const RestaurantCard = ({ id, imageUrl, title, rating, genre, address, shortDescription, dishes, long, lat }) => {
+const RestaurantCard = ({
+    id,
+    imageUrl,
+    title,
+    rating,
+    genre,
+    address,
+    shortDescription,
+    dishes,
+    long,
+    lat
+}) => {
+    const navigation = useNavigation()
+
     return (
-        <TouchableOpacity style={css.cardContainer}>
-            <Image
-                source={{ uri: urlFor(imageUrl).url() }}
-                style={css.image}
-            />
+        <TouchableOpacity
+            style={css.cardContainer}
+            onPress={() => {
+                navigation.navigate("Restaurant", {
+                    id,
+                    imageUrl,
+                    title,
+                    rating,
+                    genre,
+                    address,
+                    shortDescription,
+                    dishes,
+                    long,
+                    lat
+                })
+            }}
+        >
+            <Image source={{ uri: urlFor(imageUrl).url() }} style={css.image} />
 
             <View style={css.textContainer}>
                 <Text style={css.title}>{title}</Text>
@@ -19,7 +46,9 @@ const RestaurantCard = ({ id, imageUrl, title, rating, genre, address, shortDesc
                     <StarIcon color="green" opacity={0.5} size={20} />
                     <StarIcon color="green" opacity={0.5} size={20} />
                     <StarIcon color="green" opacity={0.5} size={20} />
-                    <Text style={css.ratingText}>{rating} . {genre}</Text>
+                    <Text style={css.ratingText}>
+                        {rating} . {genre}
+                    </Text>
                 </View>
 
                 <View style={css.nearbyContainer}>
@@ -35,7 +64,7 @@ const css = {
     cardContainer: {
         backgroundColor: "#fff",
         marginRight: "0.5rem",
-        boxShadow: "5px 5px 5px #0002",
+        boxShadow: "5px 5px 5px #0002"
     },
     image: {
         height: "9rem",
@@ -43,7 +72,7 @@ const css = {
         marginBottom: "0.2rem"
     },
     textContainer: {
-        padding: "0.4rem",
+        padding: "0.4rem"
     },
     title: {
         fontWeight: 700,
@@ -63,7 +92,7 @@ const css = {
     },
     nearbyContainer: {
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "center"
     },
     nearbyText: {
         color: "#666",
