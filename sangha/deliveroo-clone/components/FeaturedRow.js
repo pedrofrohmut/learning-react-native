@@ -5,34 +5,34 @@ import { useEffect, useState } from "react"
 import sanityClient from "../sanity"
 
 const query = `
-* [_type == "featured" && _id == $id] {
-    Restaurants[] -> {
-        _id,
-        name,
-        image,
-        rating,
-        type -> {
-            name
-        },
-        address,
-        short_description,
-        dishes[] -> {
-            ...
-        },
-        lat,
-        long
-    }
-} [0]
+    * [_type == "featured" && _id == $id] {
+        restaurants[] -> {
+            _id,
+            name,
+            image,
+            rating,
+            type -> {
+                name
+            },
+            address,
+            short_description,
+            dishes[] -> {
+                ...
+            },
+            lat,
+            long
+        }
+    } [0]
 `
 
 const FeaturedRow = ({ id, title, description }) => {
     const [restaurants, setRestaurants] = useState([])
 
     useEffect(() => {
-        sanityClient.fetch(query, { id: id }).then(data => {
+        sanityClient.fetch(query, { id: id }).then((data) => {
             console.log("Id", id)
             console.log("Restaurant by id", data)
-            setRestaurants(data?.Restaurants)
+            setRestaurants(data?.restaurants)
         })
     }, [])
 
