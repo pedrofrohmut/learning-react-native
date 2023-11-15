@@ -1,12 +1,34 @@
+import { useState } from "react"
 import { Text, TouchableOpacity, View, Image } from "react-native"
 import Currency from "react-currency-formatter"
-import { urlFor } from "../sanity"
-import { useState } from "react"
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid"
+
+import { urlFor } from "../sanity"
+
+import { useDispatch, useSelector } from "react-redux"
+import { addBasketItem, basketItemsSelector, removeBasketItem } from "../redux/slices/basketSlice"
+
+const getAmount = (items, itemId) => {
+    const item = items.find((item) => item.value.id === itemId)
+    return item ? item.amount : 0
+}
 
 const DishRow = ({ id, name, shortDescription, price, image }) => {
     const [isPressed, setIsPressed] = useState(false)
-    const [amount, setAmount] = useState(0)
+
+    const items = useSelector(basketItemsSelector)
+
+    const dispatch = useDispatch()
+
+    const addItemToBasket = () => {
+        dispatch(addBasketItem({ id, name, shortDescription, price, image }))
+    }
+
+    const removeItemFromBasket = () => {
+        dispatch(removeBasketItem(id))
+    }
+
+    console.log("items", items)
 
     return (
         <View style={css.outerContainer}>
@@ -30,13 +52,23 @@ const DishRow = ({ id, name, shortDescription, price, image }) => {
             {isPressed && (
                 <View>
                     <View style={css.amountContainer}>
-                        <TouchableOpacity onPress={() => setAmount(amount > 0 ? amount - 1 : 0)}>
-                            <MinusCircleIcon size={35} color="#00ccbb" opacity={0.6} />
+                        <TouchableOpacity
+                            onPress={removeItemFromBasket}
+                            disabled={items.length === 0}
+                        >
+                            <MinusCircleIcon
+                                size={35}
+                                color="#00ccbb"
+                                opacity={0.6}
+                                style={items.length === 0 && css.disabledBtn}
+                            />
                         </TouchableOpacity>
 
-                        <Text style={css.amountText}>{amount}</Text>
+                        <Text style={css.amountText}>
+                            {items.length === 0 ? 0 : getAmount(items, id)}
+                        </Text>
 
-                        <TouchableOpacity onPress={() => setAmount(amount + 1)}>
+                        <TouchableOpacity onPress={addItemToBasket}>
                             <PlusCircleIcon size={35} color="#00ccbb" opacity={0.6} />
                         </TouchableOpacity>
                     </View>
@@ -83,6 +115,9 @@ const css = {
     amountText: {
         fontSize: "1.3rem",
         color: "#666"
+    },
+    disabledBtn: {
+        color: "#888"
     }
 }
 
