@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { useLayoutEffect } from "react"
 import { SafeAreaView, ScrollView, Text, View, Image, TouchableOpacity } from "react-native"
@@ -9,12 +10,17 @@ import {
     ChevronRightIcon
 } from "react-native-heroicons/outline"
 
+import { useDispatch } from "react-redux"
+
 import DishRow from "../components/DishRow"
+import BasketIcon from "../components/BasketIcon"
 import { urlFor } from "../sanity"
+import { setRestaurant } from "../redux/slices/restaurantSlice"
 
 const RestaurantScreen = () => {
     const route = useRoute()
     const navigation = useNavigation()
+    const dispatch = useDispatch()
 
     const { id, imageUrl, title, rating, genre, address, shortDescription, dishes, long, lat } =
         route.params
@@ -23,11 +29,18 @@ const RestaurantScreen = () => {
         navigation.setOptions({ headerShown: false })
     }, [])
 
+    // Load the restaurant info to redux store on page load
+    useEffect(() => {
+        dispatch(setRestaurant(route.params))
+    }, [])
+
     console.log("Dishes", dishes)
 
     return (
         <SafeAreaView>
-            <ScrollView>
+            <BasketIcon />
+
+            <ScrollView style={css.scrollView}>
                 <View style={css.container}>
                     <Image source={{ uri: urlFor(imageUrl).url() }} style={css.image} />
                     <TouchableOpacity onPress={navigation.goBack} style={css.arrowBack}>
@@ -84,6 +97,9 @@ const RestaurantScreen = () => {
 }
 
 const css = {
+    scrollView: {
+        marginBottom: "5rem"
+    },
     container: {
         position: "relative"
     },
