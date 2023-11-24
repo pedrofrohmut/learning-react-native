@@ -2,15 +2,15 @@ import { Text, TouchableOpacity, View } from "react-native"
 import Currency from "react-currency-formatter"
 
 import { useSelector } from "react-redux"
-import { basketItemsSelector, basketTotal } from "../redux/slices/basketSlice"
+import { basketItemsSelector, basketTotalSelector } from "../redux/slices/basketSlice"
 import { useNavigation } from "@react-navigation/native"
 
 const BasketIcon = () => {
     const items = useSelector(basketItemsSelector)
-    const total = useSelector(basketTotal)
+    const total = useSelector(basketTotalSelector)
     const navigation = useNavigation()
 
-    // if (items.length === 0) return null
+    if (items.length === 0) return null
 
     return (
         <View style={css.mainContainer}>
@@ -39,7 +39,8 @@ const css = {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        zIndex: 2,
     },
     lengthText: {
         color: "white",

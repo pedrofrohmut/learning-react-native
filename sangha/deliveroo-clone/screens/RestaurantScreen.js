@@ -76,7 +76,7 @@ const RestaurantScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View style={css.menuContainer}>
+                <View>
                     <Text style={css.menuTitle}>Menu</Text>
 
                     {/* Dishes */}
@@ -168,7 +168,6 @@ const css = {
         color: "#666",
         marginLeft: "0.5rem"
     },
-    menuContainer: {},
     menuTitle: {
         paddingHorizontal: "0.8rem",
         paddingVertical: "0.8rem",
