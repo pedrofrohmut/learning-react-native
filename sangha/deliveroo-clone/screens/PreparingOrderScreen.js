@@ -1,11 +1,58 @@
-import { View, Text } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { useEffect } from "react"
+import { SafeAreaView } from "react-native"
+import * as Animatable from "react-native-animatable"
+import * as Progress from "react-native-progress"
 
 const PreparingOrderScreen = () => {
+    const navigation = useNavigation()
+
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate("Delivery")
+        }, 4000)
+    }, [])
+
     return (
-        <View>
-            <Text>Preparing Order Screen</Text>
-        </View>
+        <SafeAreaView style={css.pageContainer}>
+            {/* Loading Image */}
+            <Animatable.Image
+                source={require("../assets/loading.gif")}
+                animation="slideInUp"
+                style={css.loadingImage}
+            />
+
+            {/* Loading Text */}
+            <Animatable.Text animation="slideInUp" style={css.loadingText}>
+                Waiting for the restaurant to accept your order!
+            </Animatable.Text>
+
+            {/* Spinning Circle */}
+            <Animatable.View animation="slideInUp">
+                <Progress.Circle size={60} indeterminate={true} color="#666" />
+            </Animatable.View>
+        </SafeAreaView>
     )
+}
+
+const css = {
+    pageContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#fff",
+        minHeight: "100vh"
+    },
+    loadingImage: {
+        height: "24rem",
+        width: "24rem"
+    },
+    loadingText: {
+        fontSize: "1.0rem",
+        fontWeight: 700,
+        color: "#666",
+        textAlign: "center",
+        marginVertical: "2.5rem"
+    }
 }
 
 export default PreparingOrderScreen

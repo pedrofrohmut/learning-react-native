@@ -16,6 +16,16 @@ Tut of Sonny Sangha
 
 ### Source
 
+- [React Ref Docs](https://react.dev/reference/react)
+
+- [React Navigation](https://reactnavigation.org/docs/getting-started)
+
+- [Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
+
+- [React Native Animatable](https://github.com/oblador/react-native-animatable)
+
+- [React Native Progress](https://github.com/oblador/react-native-progress)
+
 - [Sanity Manage](https://www.sanity.io/manage)
 
 - [Sanity Docs](https://www.sanity.io/docs)
@@ -24,12 +34,6 @@ Tut of Sonny Sangha
 
 - [Hero Icons](https://heroicons.com/)
 
-- [React Navigation](https://reactnavigation.org/docs/getting-started)
-
-- [Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
+- [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
 
 - [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-- [React Ref Docs](https://react.dev/reference/react)
-
-- [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
