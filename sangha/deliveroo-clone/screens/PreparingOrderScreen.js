@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
 import { SafeAreaView } from "react-native"
 import * as Animatable from "react-native-animatable"
-import * as Progress from "react-native-progress"
+import ProgressCircle from "react-native-progress/Circle"
 
 const PreparingOrderScreen = () => {
     const navigation = useNavigation()
@@ -10,7 +10,7 @@ const PreparingOrderScreen = () => {
     useEffect(() => {
         setTimeout(() => {
             navigation.navigate("Delivery")
-        }, 4000)
+        }, 1000)
     }, [])
 
     return (
@@ -29,7 +29,7 @@ const PreparingOrderScreen = () => {
 
             {/* Spinning Circle */}
             <Animatable.View animation="slideInUp">
-                <Progress.Circle size={60} indeterminate={true} color="#666" />
+                <ProgressCircle size={60} indeterminate={true} color="#666" />
             </Animatable.View>
         </SafeAreaView>
     )
