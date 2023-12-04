@@ -1,7 +1,12 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { View, Text, Image, SafeAreaView, Platform } from "react-native"
-import { ChevronDownIcon, UserIcon } from "react-native-heroicons/outline"
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native"
+import {
+    AdjustmentsVerticalIcon,
+    ChevronDownIcon,
+    MagnifyingGlassIcon,
+    UserIcon
+} from "react-native-heroicons/outline"
 
 import { DELIVERY_BIKE_IMAGE } from "../contants"
 import MySafeAreaView from "../components/MySafeAreaView"
@@ -17,23 +22,35 @@ const HomeScreen = () => {
 
     return (
         <MySafeAreaView>
-            <View className="flex-1 bg-white pt-5">
+            <View className="flex-1 bg-white px-3 pt-5">
                 {/* Header */}
-                <View className="flex-row items-center mx-4 space-x-2">
+                <View className="flex-row items-center space-x-4 mb-4">
                     <Image
                         source={{ uri: DELIVERY_BIKE_IMAGE }}
                         className="h-7 w-7 bg-gray-300 p-4 rounded-full"
                     />
 
                     <View className="flex-1">
-                        <Text className="font-bold text-gray-400 text-small">Delivery Now</Text>
-                        <View className="flex-row">
-                            <Text className="font-bold text-xl mr-2">Current location</Text>
-                            <ChevronDownIcon size={20} color="#00ccbb" />
+                        <Text className="text-gray-500 text-base">Delivery Now</Text>
+                        <View className="flex-row items-center">
+                            <Text className="font-bold text-gray-700 text-xl mr-2">Current location</Text>
+                            <TouchableOpacity className="p-1 bg-[#0cb]">
+                                <ChevronDownIcon size={25} color="#fff" />
+                            </TouchableOpacity>
                         </View>
                     </View>
 
                     <UserIcon size={35} color="#0cb" />
+                </View>
+
+                {/* Search */}
+                <View className="flex-row items-center space-x-4">
+                    <View className="flex-1 flex-row space-x-2 rounded-md px-3 py-2 text-white bg-gray-700">
+                        <MagnifyingGlassIcon size={30} color="#0cb" />
+                        <TextInput className="text-white" keyboardType="default" />
+                    </View>
+
+                    <AdjustmentsVerticalIcon size={35} color="#0cb" />
                 </View>
             </View>
         </MySafeAreaView>
