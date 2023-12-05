@@ -36,6 +36,8 @@ Tut of Sonny Sangha
 
 - [Sanity Client](https://github.com/sanity-io/client)
 
+- [Sanity Image Url](https://github.com/sanity-io/image-url)
+
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
 
 - [Hero Icons](https://heroicons.com/)
