@@ -31,15 +31,38 @@ export const sanityClient = createClient({
 export const fetchFeaturedCategories = async () => {
     const query = `
         * [_type == "featured"] {
-            ...,
-          restaurants[]-> {
-            ...,
-            dishes[]->
-          }
+            _id,
+            name,
+            short_description,
         }
     `
-    const data = await sanityClient.fetch(query)
-    return data
+    const featuredCategories = await sanityClient.fetch(query)
+    return featuredCategories
+}
+
+export const fetchRestaurantsByFeaturedId = async (id) => {
+    const query = `
+        * [_type == "featured" && _id == $id] {
+            restaurants[] -> {
+                _id,
+                name,
+                image,
+                rating,
+                type -> {
+                    name
+                },
+                address,
+                short_description,
+                dishes[] -> {
+                    ...
+                },
+                lat,
+                long
+            }
+        } [0]
+    `
+    const featuredCategory = await sanityClient.fetch(query, { id })
+    return featuredCategory.restaurants || []
 }
 
 const builder = imageUrlBuilder(sanityClient)
