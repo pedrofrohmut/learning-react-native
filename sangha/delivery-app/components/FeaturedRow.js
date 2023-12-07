@@ -40,15 +40,11 @@ const FeaturedRow = ({ id, title, description }) => {
                     <RestaurantCard
                         key={restaurant._id}
                         id={restaurant._id}
-                        imageUrl={urlFor(restaurant.image).url()}
                         title={restaurant.name}
+                        imageUrl={urlFor(restaurant.image).url()}
                         rating={restaurant.rating}
-                        genre={restaurant.genre}
+                        genre={restaurant.type?.name}
                         address={restaurant.address}
-                        shortDescription={restaurant.short_description}
-                        dishes={restaurant.dishes}
-                        long={restaurant.long}
-                        lat={restaurant.lat}
                     />
                 ))}
             </ScrollView>

@@ -1,5 +1,4 @@
-import { useNavigation } from "@react-navigation/native"
-import { useEffect, useLayoutEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native"
 import {
     AdjustmentsVerticalIcon,
@@ -15,14 +14,7 @@ import FeaturedRow from "../components/FeaturedRow"
 import { fetchFeaturedCategories } from "../sanity"
 
 const HomeScreen = () => {
-    const navigation = useNavigation()
     const [featuredCategories, setFeaturedCategories] = useState([])
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false
-        })
-    }, [])
 
     useEffect(() => {
         fetchFeaturedCategories().then((data) => {

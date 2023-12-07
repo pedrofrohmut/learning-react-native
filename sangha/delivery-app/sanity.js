@@ -8,6 +8,7 @@ export const sanityClient = createClient({
     apiVersion: "2021-10-21"
 })
 
+// HomeScreen -> FeaturedRow
 export const fetchFeaturedCategories = async () => {
     const query = `
         * [_type == "featured"] {
@@ -20,6 +21,7 @@ export const fetchFeaturedCategories = async () => {
     return featuredCategories
 }
 
+// HomeScreen -> FeaturedRow -> RestaurantCard
 export const fetchRestaurantsByFeaturedId = async (id) => {
     const query = `
         * [_type == "featured" && _id == $id] {
@@ -32,12 +34,6 @@ export const fetchRestaurantsByFeaturedId = async (id) => {
                     name
                 },
                 address,
-                short_description,
-                dishes[] -> {
-                    ...
-                },
-                lat,
-                long
             }
         } [0]
     `
@@ -45,6 +41,7 @@ export const fetchRestaurantsByFeaturedId = async (id) => {
     return featuredCategory.restaurants || []
 }
 
+// HomeScreen -> Categories
 export const fetchCategories = async () => {
     const query = `
         * [_type == "category"] {
@@ -55,6 +52,29 @@ export const fetchCategories = async () => {
     `
     const categories = await sanityClient.fetch(query)
     return categories
+}
+
+// RestaurantScreen
+export const fetchRestaurantById = async (id) => {
+    const query = `
+        * [_type == "restaurant" && _id == $id] {
+            image,
+            name,
+            rating,
+            type -> {
+                ...,
+            },
+            address,
+            short_description,
+            dishes[]-> {
+                ...,
+            },
+            long,
+            lat,
+        } [0]
+    `
+    const restaurant = await sanityClient.fetch(query, { id })
+    return restaurant
 }
 
 const builder = imageUrlBuilder(sanityClient)
