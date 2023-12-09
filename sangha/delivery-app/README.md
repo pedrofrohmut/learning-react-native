@@ -40,6 +40,8 @@ Tut of Sonny Sangha
 
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
 
+- [Nativewind](https://www.nativewind.dev/)
+
 - [Hero Icons](https://heroicons.com/)
 
 - [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
