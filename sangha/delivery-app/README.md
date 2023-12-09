@@ -6,44 +6,44 @@ Tut of Sonny Sangha
 
 ### at dev
 
-- [Project at dev](http://localhost:19006/)
+-   [Project at dev](http://localhost:19006/)
 
     ...> $ npm run web
 
-- [Sanity at dev](http://localhost:3333/desk)
+-   [Sanity at dev](http://localhost:3333/desk)
 
     .../sanity> $ npm run dev
 
 ### Source
 
-- [React Ref Docs](https://react.dev/reference/react)
+-   [React Ref Docs](https://react.dev/reference/react)
 
-- [Expo Docs](https://docs.expo.dev/)
+-   [Expo Docs](https://docs.expo.dev/)
 
-- [React Navigation](https://reactnavigation.org/docs/getting-started)
+-   [React Navigation](https://reactnavigation.org/docs/getting-started)
 
-- [Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
+-   [Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
 
-- [React Native Animatable](https://github.com/oblador/react-native-animatable)
+-   [React Native Animatable](https://github.com/oblador/react-native-animatable)
 
-- [React Native Progress](https://github.com/oblador/react-native-progress)
+-   [React Native Progress](https://github.com/oblador/react-native-progress)
 
-- [React Native MapView](https://docs.expo.dev/versions/latest/sdk/map-view/)
+-   [React Native MapView](https://docs.expo.dev/versions/latest/sdk/map-view/)
 
-- [Sanity Manage](https://www.sanity.io/manage)
+-   [Sanity Manage](https://www.sanity.io/manage)
 
-- [Sanity Docs](https://www.sanity.io/docs)
+-   [Sanity Docs](https://www.sanity.io/docs)
 
-- [Sanity Client](https://github.com/sanity-io/client)
+-   [Sanity Client](https://github.com/sanity-io/client)
 
-- [Sanity Image Url](https://github.com/sanity-io/image-url)
+-   [Sanity Image Url](https://github.com/sanity-io/image-url)
 
-- [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
+-   [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
 
-- [Nativewind](https://www.nativewind.dev/)
+-   [Nativewind](https://www.nativewind.dev/)
 
-- [Hero Icons](https://heroicons.com/)
+-   [Hero Icons](https://heroicons.com/)
 
-- [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
+-   [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
 
-- [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+-   [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)

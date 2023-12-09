@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native"
-import { Image, Text, TouchableOpacity, View } from "react-native"
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { useEffect, useState } from "react"
 import {
     ArrowLeftIcon,
@@ -43,7 +43,7 @@ const RestaurantScreen = () => {
 
     return (
         <MySafeAreaView>
-            <View>
+            <ScrollView className="mb-6">
                 <View>
                     <Image source={{ uri: imageUrl }} className="w-full h-56 bg-gray-500 p-4" />
 
@@ -76,9 +76,9 @@ const RestaurantScreen = () => {
                     <ChevronRightIcon size={22} color="#0cb" />
                 </TouchableOpacity>
 
-                <View>
-                    <Text className="text-3xl font-bold px-4 py-3">Menu</Text>
+                <Text className="text-3xl font-bold px-4 py-3">Menu</Text>
 
+                <View className="pb-8">
                     {dishes?.map((dish) => (
                         <DishRow
                             key={dish._id}
@@ -90,7 +90,7 @@ const RestaurantScreen = () => {
                         />
                     ))}
                 </View>
-            </View>
+            </ScrollView>
         </MySafeAreaView>
     )
 }
