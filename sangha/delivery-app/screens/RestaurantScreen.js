@@ -12,6 +12,7 @@ import MySafeAreaView from "../components/MySafeAreaView"
 import { fetchRestaurantById, urlFor } from "../sanity"
 import { MapPinIcon } from "react-native-heroicons/outline"
 import DishRow from "../components/DishRow"
+import BasketPopup from "../components/BasketPopup"
 
 const RestaurantScreen = () => {
     const navigation = useNavigation()
@@ -43,7 +44,7 @@ const RestaurantScreen = () => {
 
     return (
         <MySafeAreaView>
-            <ScrollView className="mb-6">
+            <ScrollView className="mb-10">
                 <View>
                     <Image source={{ uri: imageUrl }} className="w-full h-56 bg-gray-500 p-4" />
 
@@ -91,6 +92,8 @@ const RestaurantScreen = () => {
                     ))}
                 </View>
             </ScrollView>
+
+            <BasketPopup />
         </MySafeAreaView>
     )
 }

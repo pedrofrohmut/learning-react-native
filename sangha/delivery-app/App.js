@@ -8,10 +8,10 @@ import store from "./redux/store"
 import HomeScreen from "./screens/HomeScreen"
 import RestaurantScreen from "./screens/RestaurantScreen"
 
-const Stack = createNativeStackNavigator()
+// import "./styles/main.css"
+// import "./styles/output.css"
 
-import "./styles.css"
-import "./output.css"
+const Stack = createNativeStackNavigator()
 
 const App = () => {
     return (
