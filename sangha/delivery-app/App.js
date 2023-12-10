@@ -10,6 +10,9 @@ import RestaurantScreen from "./screens/RestaurantScreen"
 
 const Stack = createNativeStackNavigator()
 
+import "./styles.css"
+import "./output.css"
+
 const App = () => {
     return (
         <Provider store={store}>
