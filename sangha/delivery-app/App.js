@@ -7,7 +7,9 @@ import store from "./redux/store"
 
 import HomeScreen from "./screens/HomeScreen"
 import RestaurantScreen from "./screens/RestaurantScreen"
+import BasketScreen from "./screens/BasketScreen"
 
+// Uncomment css imports for Expo Web
 // import "./styles/main.css"
 // import "./styles/output.css"
 
@@ -19,14 +21,19 @@ const App = () => {
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen
-                        name="Home"
+                        name="HomeScreen"
                         component={HomeScreen}
                         options={{ headerShown: false }}
                     />
                     <Stack.Screen
-                        name="Restaurant"
+                        name="RestaurantScreen"
                         component={RestaurantScreen}
                         options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="BasketScreen"
+                        component={BasketScreen}
+                        options={{ presentation: "modal", headerShown: false }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

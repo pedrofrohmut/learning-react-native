@@ -1,16 +1,20 @@
+import { useEffect } from "react"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
-import { useEffect, useState } from "react"
 import {
     ArrowLeftIcon,
     ChevronRightIcon,
     QuestionMarkCircleIcon,
     StarIcon
 } from "react-native-heroicons/solid"
+import { MapPinIcon } from "react-native-heroicons/outline"
+
+import { useDispatch, useSelector } from "react-redux"
+import { storeRestaurant } from "../redux/actions/restaurantActions"
+import { restaurantSelector } from "../redux/selectors/restaurantSelectors"
 
 import MySafeAreaView from "../components/MySafeAreaView"
 import { fetchRestaurantById, urlFor } from "../sanity"
-import { MapPinIcon } from "react-native-heroicons/outline"
 import DishRow from "../components/DishRow"
 import BasketPopup from "../components/BasketPopup"
 
@@ -18,19 +22,16 @@ const RestaurantScreen = () => {
     const navigation = useNavigation()
     const route = useRoute()
 
-    const [restaurant, setRestaurant] = useState(null)
-
-    console.log("RestaurantScreen", route)
+    const dispatch = useDispatch()
+    const restaurant = useSelector(restaurantSelector)
 
     const restaurantId = route.params.id
 
     useEffect(() => {
         fetchRestaurantById(restaurantId).then((data) => {
-            setRestaurant(data)
+            storeRestaurant(dispatch, data)
         })
     }, [])
-
-    console.log("RestaurantScreen - Restaurant: ", restaurant)
 
     if (restaurant == null) {
         return null

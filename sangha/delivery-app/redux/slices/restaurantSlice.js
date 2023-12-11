@@ -1,16 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    restaurant: {
-        id: null,
-        imageUrl: null,
-        title: null,
-        rating: null,
-        genre: null,
-        address: null,
-        shortDescription: null,
-        dishes: null
-    }
+    restaurant: null
 }
 
 const restaurantSlice = createSlice({
@@ -24,7 +15,5 @@ const restaurantSlice = createSlice({
 })
 
 export const { setRestaurant } = restaurantSlice.actions
-
-export const restaurantSelector = (state) => state.restaurant.restaurant
 
 export default restaurantSlice.reducer

@@ -4,7 +4,7 @@ import Currency from "react-currency-formatter"
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid"
 
 import { addItemToBasket, removeItemFromBasket } from "../redux/actions/basketActions"
-import { basketItemsSelector } from "../redux/selectors/basketSelector"
+import { basketItemsSelector } from "../redux/selectors/basketSelectors"
 import { useDispatch, useSelector } from "react-redux"
 
 const getAmount = (items, itemId) => {
