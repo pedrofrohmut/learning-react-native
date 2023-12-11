@@ -19,7 +19,7 @@ const DishRow = ({ id, name, description, price, imageUrl }) => {
 
     const items = useSelector(basketItemsSelector)
 
-    console.log("DishRow", items)
+    // console.log("DishRow", items)
 
     return (
         <View>

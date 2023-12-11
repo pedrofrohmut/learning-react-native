@@ -1,15 +1,19 @@
+import { useMemo } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { Text, TouchableOpacity, View } from "react-native"
 import Currency from "react-currency-formatter"
 
 import { useSelector } from "react-redux"
-import { basketItemsSelector, basketTotalSelector } from "../redux/selectors/basketSelectors"
+import { basketItemsSelector } from "../redux/selectors/basketSelectors"
+import { calculateTotalFromBasket } from "../redux/utils/basketUtils"
 
 const BasketPopup = () => {
     const navigation = useNavigation()
 
     const items = useSelector(basketItemsSelector)
-    const total = useSelector(basketTotalSelector)
+
+    // Caches the value and only recalculate on items change
+    const total = useMemo(() => calculateTotalFromBasket(items), [items])
 
     return (
         <View className="absolute bottom-5 w-full px-5">
