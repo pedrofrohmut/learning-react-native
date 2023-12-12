@@ -61,7 +61,7 @@ const BasketScreen = () => {
 
                 <ScrollView className="flex-1 px-2 py-2">
                     {items.map((item) => (
-                        <BasketListItem key={item.id} item={item} />
+                        <BasketListItem key={item.value.id} item={item} />
                     ))}
                 </ScrollView>
 
@@ -85,8 +85,13 @@ const BasketScreen = () => {
                             <Currency quantity={total + deliveryFee} currency="GBP" />
                         </Text>
                     </View>
-                    <TouchableOpacity className="rounded-lg bg-[#0cb] py-3">
-                        <Text className="text-center text-lg text-white font-bold">Place Order</Text>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("PreparingOrderScreen")}
+                        className="rounded-lg bg-[#0cb] py-3"
+                    >
+                        <Text className="text-center text-lg text-white font-bold">
+                            Place Order
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>
