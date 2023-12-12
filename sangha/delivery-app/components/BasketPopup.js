@@ -15,6 +15,8 @@ const BasketPopup = () => {
     // Caches the value and only recalculate on items change
     const total = useMemo(() => calculateTotalFromBasket(items), [items])
 
+    if (items.length === 0) return null
+
     return (
         <View className="absolute bottom-5 w-full px-5">
             <TouchableOpacity
