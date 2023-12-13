@@ -14,7 +14,7 @@ const FeaturedRow = ({ id, title, description }) => {
         })
     }, [])
 
-    console.log("FeaturedRow", restaurants)
+    // console.log("FeaturedRow", restaurants)
 
     return (
         <View className="mb-3">

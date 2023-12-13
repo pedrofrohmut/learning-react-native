@@ -13,7 +13,7 @@ const Categories = () => {
         })
     }, [])
 
-    console.log("Categories", categories)
+    // console.log("Categories", categories)
 
     return (
         <ScrollView

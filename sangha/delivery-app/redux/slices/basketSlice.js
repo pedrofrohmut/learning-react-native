@@ -12,7 +12,7 @@ const basketSlice = createSlice({
         addBasketItem: (state, action) => {
             const itemInMenu = state.items.find((item) => item.value.id === action.payload.id)
 
-            console.log("basketSlice - add: ", state.items)
+            // console.log("basketSlice - add: ", state.items)
 
             if (itemInMenu) {
                 state.items = state.items.reduce((acc, curr) => {
@@ -29,7 +29,7 @@ const basketSlice = createSlice({
             // Skip when empty basket
             if (state.items.length === 0) return
 
-            console.log("basketSlice - remove: ", state.items)
+            // console.log("basketSlice - remove: ", state.items)
 
             state.items = state.items.reduce((acc, curr) => {
                 if (curr.value.id === action.payload) {

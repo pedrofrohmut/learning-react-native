@@ -22,7 +22,7 @@ const HomeScreen = () => {
         })
     }, [])
 
-    console.log("HomeScreen", featuredCategories)
+    // console.log("HomeScreen", featuredCategories)
 
     return (
         <MySafeAreaView>
