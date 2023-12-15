@@ -10,6 +10,8 @@ Reference links of the tecnologies used in this project:
 
 -   [React Native Navigation](https://reactnavigation.org/docs/getting-started/)
 
+-   [React Native Google Places Autocomplete](https://github.com/FaridSafi/react-native-google-places-autocomplete)
+
 Styles and Icons:
 
 -   [Nativewind: Tailwindcss wrapper for React Native](https://www.nativewind.dev/)
