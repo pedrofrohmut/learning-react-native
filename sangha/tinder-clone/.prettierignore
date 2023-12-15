@@ -1,0 +1,5 @@
+README.md
+yarn.lock
+.expo/
+assets/
+node_modules/
