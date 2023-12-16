@@ -1,11 +1,17 @@
-import CustomSafeAreaView from "./components/CustomSafeAreaView"
+import { NavigationContainer } from "@react-navigation/native"
 
-import HomeScreen from "./screens/HomeScreen"
+import NavigationStack from "./components/NavigationStack"
+import CustomSafeAreaView from "./components/CustomSafeAreaView"
+import { AuthProvider } from "./hooks/useAuth"
 
 const App = () => {
     return (
         <CustomSafeAreaView>
-            <HomeScreen />
+            <NavigationContainer>
+                <AuthProvider>
+                    <NavigationStack />
+                </AuthProvider>
+            </NavigationContainer>
         </CustomSafeAreaView>
     )
 }

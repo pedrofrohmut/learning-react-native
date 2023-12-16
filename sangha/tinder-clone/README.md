@@ -8,6 +8,12 @@
 
 - [React Navigation](https://reactnavigation.org/docs/getting-started)
 
+- [Expo Google App Auth](https://github.com/expo/expo/blob/sdk-44/docs/pages/versions/v44.0.0/sdk/google.md)
+
+- [Console Google Cloud](https://console.cloud.google.com/)
+
+- [Console Firebase](https://console.firebase.google.com/)
+
 Styles:
 
 - [Tailwindcss](https://tailwindcss.com/docs/installation)

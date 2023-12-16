@@ -37,3 +37,7 @@ yarn-error.*
 # Custom
 package-lock.json
 yarn.lock
+
+google-services.json
+GoogleService-Info.plist
+api-keys.js
