@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get("window")
 const MovieCard = ({ item, handlePress }) => (
     <TouchableWithoutFeedback onPress={handlePress}>
         <Image
-            source={require("../assets/sushi-place.jpg")}
+            source={require("../assets/images/moviePoster1.png")}
             style={{
                 width: width * 0.6,
                 height: height * 0.4

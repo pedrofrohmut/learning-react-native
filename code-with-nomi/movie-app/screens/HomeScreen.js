@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Text, TouchableOpacity, View } from "react-native"
+import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
 import CustomSafeAreaView from "../components/CustomSafeAreaView"
