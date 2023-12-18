@@ -12,6 +12,8 @@ Tutorial: Movie catalog app
 
 - [React Navigation](https://reactnavigation.org/docs/getting-started)
 
+- [React Native Carousel](https://github.com/meliorence/react-native-snap-carousel)
+
 ### Styles
 
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
@@ -21,6 +23,8 @@ Tutorial: Movie catalog app
 - [Nativewind Blog](https://medium.com/@simpleandshort/how-to-use-nativewind-tailwindcss-in-your-react-native-application-67874f41e13f)
 
 - [Hero Icons](https://heroicons.com/)
+
+- [React Native Hero Icons](https://github.com/ecklf/react-native-heroicons)
 
 ### Others
 
