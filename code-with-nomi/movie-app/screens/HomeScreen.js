@@ -16,7 +16,7 @@ const HomeScreen = () => {
     const [topRated, setTopRated] = useState([1, 2, 3])
 
     return (
-        <View className="flex-1 bg-neutral-800">
+        <View className="flex-1 bg-neutral-900">
             <CustomSafeAreaView>
                 {/* Search Bar and Logo */}
                 <View className="flex-row justify-between items-center px-4">

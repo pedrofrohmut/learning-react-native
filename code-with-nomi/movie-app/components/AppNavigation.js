@@ -24,7 +24,7 @@ const AppNavigation = () => {
                 <Stack.Screen
                     name="PersonScreen"
                     component={PersonScreen}
-                    options={{ headerShown: true }}
+                    options={{ headerShown: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
