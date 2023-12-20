@@ -2,12 +2,18 @@ import { useState } from "react"
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
-import CustomSafeAreaView from "../components/CustomSafeAreaView"
-import TrendingMoviesCarousel from "../components/TrendingMoviesCarousel"
 import { COLORS } from "../constants"
+import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
+import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
+import MovieList from "../components/home/MovieList"
+import { useNavigation } from "@react-navigation/native"
 
 const HomeScreen = () => {
+    const navigation = useNavigation()
+
     const [trending, setTrending] = useState([1, 2, 3])
+    const [upcoming, setUpcoming] = useState([1, 2, 3])
+    const [topRated, setTopRated] = useState([1, 2, 3])
 
     return (
         <View className="flex-1 bg-neutral-800">
@@ -29,7 +35,13 @@ const HomeScreen = () => {
                     contentContainerStyle={{ paddingBottom: 10 }}
                 >
                     {/* Trending Movies Carousel */}
-                    <TrendingMoviesCarousel data={trending} />
+                    <TrendingMoviesCarousel data={trending} navigation={navigation} />
+
+                    {/* Upcoming Movies */}
+                    <MovieList title="Upcoming" data={upcoming} navigation={navigation} />
+
+                    {/* Top Rated Movies */}
+                    <MovieList title="Top Rated" data={topRated} navigation={navigation} />
                 </ScrollView>
             </CustomSafeAreaView>
         </View>

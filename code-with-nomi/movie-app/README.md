@@ -4,6 +4,12 @@ Tutorial: Movie catalog app
 
 ## Links
 
+- [Youtube video](https://www.youtube.com/watch?v=Q1xQuCpYIFE&t=199s)
+
+- [Tutorial Repo](https://github.com/syednomishah/Movie-App-React-Native)
+
+- [Code With Nomi Channel](https://www.youtube.com/@codewithnomi)
+
 ### Teks
 
 - [React Ref Docs](https://react.dev/reference/react)
@@ -13,6 +19,8 @@ Tutorial: Movie catalog app
 - [React Navigation](https://reactnavigation.org/docs/getting-started)
 
 - [React Native Carousel](https://github.com/meliorence/react-native-snap-carousel)
+
+- [Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
 
 ### Styles
 
