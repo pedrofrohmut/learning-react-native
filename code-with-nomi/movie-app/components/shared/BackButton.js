@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native"
-import { COLORS } from "../../constants"
+import { COLORS } from "../../shared/constants"
 import { ChevronLeftIcon } from "react-native-heroicons/solid"
 
 const BackButton = ({ navigation }) => {

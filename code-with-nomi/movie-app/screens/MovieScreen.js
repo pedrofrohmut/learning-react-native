@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
-import { useNavigation, useRoute } from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native"
 import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
 import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 import { LinearGradient } from "expo-linear-gradient"
 
-import { COLORS } from "../constants"
+import { COLORS, MOVIE_NAME } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CastMembers from "../components/movie-list/CastMembers"
 import MovieList from "../components/home/MovieList"
@@ -15,13 +15,10 @@ const dimensions = Dimensions.get("screen")
 
 const MovieScreen = () => {
     const navigation = useNavigation()
-    const route = useRoute()
 
     const [isFavorite, setIsFavorite] = useState(false)
     const [cast, setCast] = useState([1, 2, 3, 4, 5])
     const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5])
-
-    const movieName = route.params
 
     return (
         <ScrollView className="flex-1 bg-neutral-900">
@@ -54,7 +51,7 @@ const MovieScreen = () => {
             <View style={{ marginTop: -80 }} className="mb-8">
                 {/* Title */}
                 <Text className="text-white text-3xl text-center font-bold tracking-widest mb-3">
-                    {movieName}
+                    {MOVIE_NAME}
                 </Text>
 
                 {/* Status, release, runtime */}

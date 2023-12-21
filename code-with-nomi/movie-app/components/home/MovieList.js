@@ -7,13 +7,11 @@ import {
     TouchableWithoutFeedback,
     View
 } from "react-native"
-import { COLORS } from "../../constants"
-import { useNavigation } from "@react-navigation/native"
 
-const movieName = "Ant-man and the Wasp: Quantumania"
+import { COLORS, MOVIE_NAME } from "../../shared/constants"
+import { movieFmtd } from "../../shared/utils"
+
 const dimensions = Dimensions.get("screen")
-
-const movieFmtd = (name) => (name.length > 14 ? name.slice(0, 14) + "..." : name)
 
 const MovieList = ({ title, data, navigation, hideSeeAll }) => {
     return (
@@ -34,9 +32,10 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                 showsHorizontalScrollIndicator
                 contentContainerStyle={{ paddingHorizontal: 15 }}
             >
-                {data.map((item, idx) => (
+                {data.map((item, index) => (
                     <TouchableWithoutFeedback
-                        onPress={() => navigation.push("MovieScreen", movieName)}
+                        key={index}
+                        onPress={() => navigation.push("MovieScreen", MOVIE_NAME)}
                     >
                         <View className="mr-5">
                             <Image
@@ -47,7 +46,7 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                                     height: dimensions.height * 0.22
                                 }}
                             />
-                            <Text className="text-neutral-400">{movieFmtd(movieName)}</Text>
+                            <Text className="text-neutral-400">{movieFmtd(MOVIE_NAME)}</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 ))}

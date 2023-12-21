@@ -2,7 +2,7 @@ import { useState } from "react"
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
-import { COLORS } from "../constants"
+import { COLORS } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
 import MovieList from "../components/home/MovieList"

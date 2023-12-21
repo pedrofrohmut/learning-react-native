@@ -4,7 +4,7 @@ import { Dimensions, Image, ScrollView, TouchableOpacity, View, Text } from "rea
 import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
 import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 
-import { COLORS } from "../constants"
+import { COLORS } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CircleShapeWrapper from "../components/shared/CircleShapeWrapper"
 import MovieList from "../components/home/MovieList"

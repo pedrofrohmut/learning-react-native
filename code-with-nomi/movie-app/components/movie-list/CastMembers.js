@@ -1,8 +1,7 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 
+import { nameFmtd } from "../../shared/utils"
 import CircleShapeWrapper from "../shared/CircleShapeWrapper"
-
-const nameFmtd = (name) => (name.length > 10 ? name.slice(0, 10) + "..." : name)
 
 const CastMembers = ({ cast, navigation }) => {
     const personName = "Keanu Reevs"
