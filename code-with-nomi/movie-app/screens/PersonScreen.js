@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { Dimensions, Image, ScrollView, TouchableOpacity, View, Text } from "react-native"
 import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
@@ -9,6 +9,7 @@ import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CircleShapeWrapper from "../components/shared/CircleShapeWrapper"
 import MovieList from "../components/home/MovieList"
 import BackButton from "../components/shared/BackButton"
+import LoadingScreen from "./LoadingScreen"
 
 const dimensions = Dimensions.get("screen")
 
@@ -17,6 +18,17 @@ const PersonScreen = () => {
 
     const [isFavorite, setIsFavorite] = useState(false)
     const [personMovies, setPersonMovies] = useState([1, 2, 3, 4])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+    }, [])
+
+    if (isLoading) {
+        return <LoadingScreen navigation={navigation} />
+    }
 
     return (
         <ScrollView className="bg-neutral-900">

@@ -1,20 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import {
-    Dimensions,
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
-} from "react-native"
+import { Dimensions, TextInput, TouchableOpacity, View } from "react-native"
 import { XMarkIcon } from "react-native-heroicons/solid"
 
-import { MOVIE_NAME } from "../shared/constants"
-import { movieFmtd } from "../shared/utils"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import BackButton from "../components/shared/BackButton"
+import SearchResults from "../components/search/SearchResults"
+import Loading from "../components/shared/Loading"
 
 const dimensions = Dimensions.get("screen")
 
@@ -23,6 +15,14 @@ const SearchScreen = () => {
 
     const [text, setText] = useState("")
     const [results, setResults] = useState([1, 2, 3, 4])
+
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+    }, [])
 
     return (
         <View className="flex-1 bg-neutral-900">
@@ -40,6 +40,7 @@ const SearchScreen = () => {
                         value={text}
                         onChangeText={(x) => setText(x)}
                     />
+
                     {/* Clear Search Btn */}
                     <TouchableOpacity
                         className="rounded-full p-3 m-1 bg-neutral-500"
@@ -49,35 +50,15 @@ const SearchScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/* Search Results */}
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingHorizontal: 15 }}
-                >
-                    <Text className="text-white text-lg font-semibold mb-3">
-                        Results ({results.length})
-                    </Text>
-                    <View className="flex-row flex-wrap justify-between">
-                        {results?.map((movie, index) => (
-                            <TouchableOpacity
-                                key={index}
-                                onPress={() => navigation.navigate("MovieScreen", movie)}
-                                className="mb-5"
-                            >
-                                <Image
-                                    source={require("../assets/images/moviePoster2.png")}
-                                    style={{
-                                        width: dimensions.width * 0.44,
-                                        height: dimensions.height * 0.3
-                                    }}
-                                />
-                                <Text className="text-neutral-400 text-center">
-                                    {movieFmtd(MOVIE_NAME)}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                </ScrollView>
+                {isLoading && <Loading />}
+
+                {!isLoading && (
+                    <SearchResults
+                        results={results}
+                        dimensions={dimensions}
+                        navigation={navigation}
+                    />
+                )}
             </CustomSafeAreaView>
         </View>
     )

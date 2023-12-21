@@ -7,6 +7,7 @@ import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
 import MovieList from "../components/home/MovieList"
 import { useNavigation } from "@react-navigation/native"
+import Loading from "../components/shared/Loading"
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -14,6 +15,8 @@ const HomeScreen = () => {
     const [trending, setTrending] = useState([1, 2, 3])
     const [upcoming, setUpcoming] = useState([1, 2, 3])
     const [topRated, setTopRated] = useState([1, 2, 3])
+
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <View className="flex-1 bg-neutral-900">
@@ -30,19 +33,23 @@ const HomeScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingBottom: 10 }}
-                >
-                    {/* Trending Movies Carousel */}
-                    <TrendingMoviesCarousel data={trending} navigation={navigation} />
+                {isLoading && <Loading />}
 
-                    {/* Upcoming Movies */}
-                    <MovieList title="Upcoming" data={upcoming} navigation={navigation} />
+                {!isLoading && (
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ paddingBottom: 10 }}
+                    >
+                        {/* Trending Movies Carousel */}
+                        <TrendingMoviesCarousel data={trending} navigation={navigation} />
 
-                    {/* Top Rated Movies */}
-                    <MovieList title="Top Rated" data={topRated} navigation={navigation} />
-                </ScrollView>
+                        {/* Upcoming Movies */}
+                        <MovieList title="Upcoming" data={upcoming} navigation={navigation} />
+
+                        {/* Top Rated Movies */}
+                        <MovieList title="Top Rated" data={topRated} navigation={navigation} />
+                    </ScrollView>
+                )}
             </CustomSafeAreaView>
         </View>
     )

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
@@ -10,6 +10,7 @@ import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CastMembers from "../components/movie-list/CastMembers"
 import MovieList from "../components/home/MovieList"
 import BackButton from "../components/shared/BackButton"
+import LoadingScreen from "./LoadingScreen"
 
 const dimensions = Dimensions.get("screen")
 
@@ -19,6 +20,17 @@ const MovieScreen = () => {
     const [isFavorite, setIsFavorite] = useState(false)
     const [cast, setCast] = useState([1, 2, 3, 4, 5])
     const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+    }, [])
+
+    if (isLoading) {
+        return <LoadingScreen navigation={navigation} />
+    }
 
     return (
         <ScrollView className="flex-1 bg-neutral-900">
@@ -35,7 +47,7 @@ const MovieScreen = () => {
                     className="absolute bottom-0"
                 />
 
-                {/* Container For Back and Favorite Buttons */}
+                {/* Container For Back and Favorite Buttons: Absolute here so the overflow of image can happen */}
                 <CustomSafeAreaView style={{ position: "absolute", width: "100%" }}>
                     <View className="flex-row items-center justify-between px-4 py-3">
                         <BackButton navigation={navigation} />

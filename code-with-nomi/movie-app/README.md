@@ -22,6 +22,8 @@ Tutorial: Movie catalog app
 
 - [Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
 
+- [React Native Progress](https://github.com/oblador/react-native-progress)
+
 ### Styles
 
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
