@@ -1,5 +1,7 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 
+import CircleShapeWrapper from "../shared/CircleShapeWrapper"
+
 const nameFmtd = (name) => (name.length > 10 ? name.slice(0, 10) + "..." : name)
 
 const CastMembers = ({ cast, navigation }) => {
@@ -20,12 +22,12 @@ const CastMembers = ({ cast, navigation }) => {
                         className="mr-4 items-center"
                         onPress={() => navigation.navigate("PersonScreen", person)}
                     >
-                        <View className="rounded-full border-2 border-neutral-700 overflow-hidden h-20 w-20 items-center">
+                        <CircleShapeWrapper height={80} width={80}>
                             <Image
                                 source={require("../../assets/images/castImage1.png")}
                                 className="rounded-2xl h-24 w-20"
                             />
-                        </View>
+                        </CircleShapeWrapper>
                         <Text className="text-white text-xs my-1">{nameFmtd(characterName)}</Text>
                         <Text className="text-neutral-400 text-xs my-1">
                             {nameFmtd(personName)}
