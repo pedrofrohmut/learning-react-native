@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { Dimensions, Image, ScrollView, TouchableOpacity, View, Text } from "react-native"
-import { ChevronLeftIcon, HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
+import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
 import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 
 import { COLORS } from "../constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CircleShapeWrapper from "../components/shared/CircleShapeWrapper"
 import MovieList from "../components/home/MovieList"
+import BackButton from "../components/shared/BackButton"
 
 const dimensions = Dimensions.get("screen")
 
@@ -21,14 +22,7 @@ const PersonScreen = () => {
         <ScrollView className="bg-neutral-900">
             <CustomSafeAreaView>
                 <View className="flex-row items-center justify-between px-4 py-3">
-                    {/* Back Btn */}
-                    <TouchableOpacity
-                        style={{ backgroundColor: COLORS.primary }}
-                        className="rounded-xl p-1"
-                        onPress={() => navigation.goBack()}
-                    >
-                        <ChevronLeftIcon size={28} strokeWidth={2} color="white" />
-                    </TouchableOpacity>
+                    <BackButton navigation={navigation} />
 
                     {/* Favorite Btn */}
                     <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>

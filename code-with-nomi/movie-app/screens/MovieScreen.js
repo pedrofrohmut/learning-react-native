@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { useNavigation, useRoute } from "@react-navigation/native"
-import { ChevronLeftIcon, HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
+import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
 import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 import { LinearGradient } from "expo-linear-gradient"
 
@@ -9,6 +9,7 @@ import { COLORS } from "../constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CastMembers from "../components/movie-list/CastMembers"
 import MovieList from "../components/home/MovieList"
+import BackButton from "../components/shared/BackButton"
 
 const dimensions = Dimensions.get("screen")
 
@@ -21,8 +22,6 @@ const MovieScreen = () => {
     const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5])
 
     const movieName = route.params
-
-    // useEffect(() => {}, [route.params])
 
     return (
         <ScrollView className="flex-1 bg-neutral-900">
@@ -42,13 +41,7 @@ const MovieScreen = () => {
                 {/* Container For Back and Favorite Buttons */}
                 <CustomSafeAreaView style={{ position: "absolute", width: "100%" }}>
                     <View className="flex-row items-center justify-between px-4 py-3">
-                        <TouchableOpacity
-                            style={{ backgroundColor: COLORS.primary }}
-                            className="rounded-xl p-1"
-                            onPress={() => navigation.goBack()}
-                        >
-                            <ChevronLeftIcon size={28} strokeWidth={2} color="white" />
-                        </TouchableOpacity>
+                        <BackButton navigation={navigation} />
                         <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
                             {isFavorite && <FullHeartIcon size={35} color={COLORS.primary} />}
                             {!isFavorite && <EmptyHeartIcon size={35} color={COLORS.primary} />}
