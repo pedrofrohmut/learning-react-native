@@ -24,6 +24,8 @@ Tutorial: Movie catalog app
 
 - [React Native Progress](https://github.com/oblador/react-native-progress)
 
+- [Axios](https://github.com/axios/axios)
+
 ### Styles
 
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)
@@ -35,6 +37,10 @@ Tutorial: Movie catalog app
 - [Hero Icons](https://heroicons.com/)
 
 - [React Native Hero Icons](https://github.com/ecklf/react-native-heroicons)
+
+### API
+
+- [The Movie DB](https://www.themoviedb.org/)
 
 ### Others
 

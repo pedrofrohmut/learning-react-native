@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
@@ -8,6 +8,7 @@ import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
 import MovieList from "../components/home/MovieList"
 import { useNavigation } from "@react-navigation/native"
 import Loading from "../components/shared/Loading"
+import { fetchTrendingMovies } from "../api/moviedb"
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -17,6 +18,12 @@ const HomeScreen = () => {
     const [topRated, setTopRated] = useState([1, 2, 3])
 
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        fetchTrendingMovies().then(movies => {
+            console.log("TrendingMovies: ", movies)
+        })
+    }, [])
 
     return (
         <View className="flex-1 bg-neutral-900">
