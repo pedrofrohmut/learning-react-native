@@ -1,31 +1,50 @@
 import { useEffect, useState } from "react"
 import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
 import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
 import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 import { LinearGradient } from "expo-linear-gradient"
 
-import { COLORS, MOVIE_NAME } from "../shared/constants"
+import { COLORS } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CastMembers from "../components/movie-list/CastMembers"
 import MovieList from "../components/home/MovieList"
 import BackButton from "../components/shared/BackButton"
 import LoadingScreen from "./LoadingScreen"
+import {
+    fetchMovieCast,
+    fetchMovieCredits,
+    fetchMovieDetails,
+    fetchSimilarMovies,
+    imageUri500
+} from "../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
 const MovieScreen = () => {
     const navigation = useNavigation()
 
+    const route = useRoute()
+
+    const movieId = route.params.id
+
     const [isFavorite, setIsFavorite] = useState(false)
     const [cast, setCast] = useState([1, 2, 3, 4, 5])
     const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5])
+    const [movie, setMovie] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        setTimeout(() => {
+        Promise.all([
+            fetchMovieDetails(movieId),
+            fetchMovieCast(movieId),
+            fetchSimilarMovies(movieId)
+        ]).then((data) => {
+            setMovie(data[0])
+            setCast(data[1])
+            setSimilarMovies(data[2])
             setIsLoading(false)
-        }, 2000)
+        })
     }, [])
 
     if (isLoading) {
@@ -37,7 +56,7 @@ const MovieScreen = () => {
             {/* Image and buttons container */}
             <View className="relative">
                 <Image
-                    source={require("../assets/images/moviePoster2.png")}
+                    source={{ uri: imageUri500(movie.poster_path) }}
                     style={{ width: dimensions.width, height: dimensions.height * 0.55 }}
                 />
 
@@ -63,46 +82,41 @@ const MovieScreen = () => {
             <View style={{ marginTop: -80 }} className="mb-8">
                 {/* Title */}
                 <Text className="text-white text-3xl text-center font-bold tracking-widest mb-3">
-                    {MOVIE_NAME}
+                    {movie.original_title}
                 </Text>
 
                 {/* Status, release, runtime */}
                 <Text className="text-neutral-400 text-base font-semibold text-center mb-2">
-                    Realeased - 2020 - 170 min
+                    {movie.status} - {movie.release_date} - {movie.runtime}
                 </Text>
 
                 {/* Genres */}
-                <View className="flex-row items-center justify-center mb-4">
-                    <Text className="text-neutral-400 font-semibold text-base text-center">
-                        Action -{" "}
-                    </Text>
-                    <Text className="text-neutral-400 font-semibold text-base text-center">
-                        Thrill -{" "}
-                    </Text>
-                    <Text className="text-neutral-400 font-semibold text-base text-center">
-                        Comedy
-                    </Text>
-                </View>
+                {movie.genres && movie.genres.length > 0 && (
+                    <View className="flex-row items-center justify-center mb-4">
+                        <Text className="text-neutral-400 text-base text-center">
+                            {movie.genres.map(({ name }) => name).join(" - ")}
+                        </Text>
+                    </View>
+                )}
 
                 {/* Description */}
                 <Text className="text-neutral-400 tracking-wide text-justify px-4">
-                    Elit dicta doloremque accusamus repudiandae modi voluptate! Est explicabo veniam
-                    magnam reiciendis assumenda. Eligendi saepe nam voluptatum ea suscipit. Corporis
-                    dolores ipsum esse ea veniam. Deleniti similique nesciunt aperiam consectetur
-                    quam eveniet? Quis expedita voluptatum ad optio ipsum Quae nemo.
+                    {movie.overview}
                 </Text>
             </View>
 
             {/* Cast Members */}
-            <CastMembers cast={cast} navigation={navigation} />
+            {cast && cast.length > 0 && <CastMembers cast={cast} navigation={navigation} />}
 
             {/* Similar Movies */}
-            <MovieList
-                title="Similar Movies"
-                hideSeeAll={true}
-                data={similarMovies}
-                navigation={navigation}
-            />
+            {similarMovies && similarMovies.length > 0 && (
+                <MovieList
+                    title="Similar Movies"
+                    hideSeeAll={true}
+                    data={similarMovies}
+                    navigation={navigation}
+                />
+            )}
         </ScrollView>
     )
 }

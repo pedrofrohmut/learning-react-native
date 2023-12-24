@@ -3,10 +3,9 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { nameFmtd } from "../../shared/utils"
 import CircleShapeWrapper from "../shared/CircleShapeWrapper"
 
-const CastMembers = ({ cast, navigation }) => {
-    const personName = "Keanu Reevs"
-    const characterName = "John Wick"
+import { fallbackPersonImage, imageUri185 } from "../../api/moviedb"
 
+const CastMembers = ({ cast, navigation }) => {
     return (
         <View className="mb-12">
             <Text className="text-white text-lg px-4 mb-5">Top Cast</Text>
@@ -23,13 +22,19 @@ const CastMembers = ({ cast, navigation }) => {
                     >
                         <CircleShapeWrapper height={80} width={80}>
                             <Image
-                                source={require("../../assets/images/castImage1.png")}
+                                source={{
+                                    uri: imageUri185(person.profile_path) || fallbackPersonImage
+                                }}
                                 className="rounded-2xl h-24 w-20"
                             />
                         </CircleShapeWrapper>
-                        <Text className="text-white text-xs my-1">{nameFmtd(characterName)}</Text>
+
+                        <Text className="text-white text-xs my-1">
+                            {nameFmtd(person.character)}
+                        </Text>
+
                         <Text className="text-neutral-400 text-xs my-1">
-                            {nameFmtd(personName)}
+                            {nameFmtd(person.name)}
                         </Text>
                     </TouchableOpacity>
                 ))}

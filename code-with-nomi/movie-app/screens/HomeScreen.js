@@ -56,7 +56,7 @@ const HomeScreen = () => {
                         contentContainerStyle={{ paddingBottom: 10 }}
                     >
                         {/* Trending Movies Carousel */}
-                        <TrendingMoviesCarousel data={trending} navigation={navigation} />
+                        <TrendingMoviesCarousel movies={trending} navigation={navigation} />
 
                         {/* Upcoming Movies */}
                         <MovieList title="Upcoming" data={upcoming} navigation={navigation} />

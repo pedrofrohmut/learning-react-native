@@ -49,3 +49,5 @@ Tutorial: Movie catalog app
 - [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 - [JSON Formatter](https://jsonformatter.curiousconcept.com/)
+
+- [Prop Types Error](https://github.com/facebook/react-native-deprecated-modules/tree/main/deprecated-react-native-prop-types)

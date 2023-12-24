@@ -36,7 +36,7 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                 {data.map((item, index) => (
                     <TouchableWithoutFeedback
                         key={index}
-                        onPress={() => navigation.push("MovieScreen", MOVIE_NAME)}
+                        onPress={() => navigation.push("MovieScreen", item)}
                     >
                         <View className="mr-5">
                             <Image
