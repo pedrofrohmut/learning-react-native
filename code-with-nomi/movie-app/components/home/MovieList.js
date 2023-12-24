@@ -10,6 +10,7 @@ import {
 
 import { COLORS, MOVIE_NAME } from "../../shared/constants"
 import { movieFmtd } from "../../shared/utils"
+import { imageUri185 } from "../../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
@@ -39,14 +40,16 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                     >
                         <View className="mr-5">
                             <Image
-                                source={require("../../assets/images/moviePoster2.png")}
+                                source={{ uri: imageUri185(item.poster_path) }}
                                 className="rounded-3xl"
                                 style={{
                                     width: dimensions.width * 0.33,
                                     height: dimensions.height * 0.22
                                 }}
                             />
-                            <Text className="text-neutral-400">{movieFmtd(MOVIE_NAME)}</Text>
+                            <Text className="text-neutral-400">
+                                {movieFmtd(item.original_title)}
+                            </Text>
                         </View>
                     </TouchableWithoutFeedback>
                 ))}

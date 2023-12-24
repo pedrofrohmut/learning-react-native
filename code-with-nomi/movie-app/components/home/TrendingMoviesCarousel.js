@@ -18,7 +18,7 @@ const TrendingMoviesCarousel = ({ data, navigation }) => {
                 renderItem={({ item }) => (
                     <TrendingMovieCard item={item} handlePress={handlePress} device={device} />
                 )}
-                firstItem={1}
+                firstItem={0}
                 inactiveSlideOpacity={0.6}
                 sliderWidth={device.width}
                 itemWidth={device.width * 0.62}

@@ -47,3 +47,5 @@ Tutorial: Movie catalog app
 - [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
 
 - [Mozilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+- [JSON Formatter](https://jsonformatter.curiousconcept.com/)

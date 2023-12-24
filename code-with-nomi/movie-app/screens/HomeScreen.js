@@ -1,28 +1,36 @@
 import { useEffect, useState } from "react"
+import { useNavigation } from "@react-navigation/native"
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
 import { COLORS } from "../shared/constants"
+
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
 import MovieList from "../components/home/MovieList"
-import { useNavigation } from "@react-navigation/native"
 import Loading from "../components/shared/Loading"
-import { fetchTrendingMovies } from "../api/moviedb"
+
+import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from "../api/moviedb"
 
 const HomeScreen = () => {
     const navigation = useNavigation()
 
-    const [trending, setTrending] = useState([1, 2, 3])
-    const [upcoming, setUpcoming] = useState([1, 2, 3])
-    const [topRated, setTopRated] = useState([1, 2, 3])
+    const [trending, setTrending] = useState([])
+    const [upcoming, setUpcoming] = useState([])
+    const [topRated, setTopRated] = useState([])
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetchTrendingMovies().then(movies => {
-            console.log("TrendingMovies: ", movies)
-        })
+        Promise.all([fetchTrendingMovies(), fetchUpcomingMovies(), fetchTopRatedMovies()]).then(
+            (data) => {
+                const [trendingMovies, upcomingMovies, topRatedMovies] = data
+                setTrending(trendingMovies)
+                setUpcoming(upcomingMovies)
+                setTopRated(topRatedMovies)
+                setIsLoading(false)
+            }
+        )
     }, [])
 
     return (
