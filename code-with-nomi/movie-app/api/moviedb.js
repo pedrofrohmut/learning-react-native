@@ -2,6 +2,20 @@ import axios from "axios"
 
 import { THEMOVIEDB_ACCESS_TOKEN } from "./secret"
 
+import StubTrendingMovies from "../stub-data/trending-movies"
+import StubUpcomingMovies from "../stub-data/upcoming-movies"
+import StubTopRatedMovies from "../stub-data/top-rated-movies"
+import StubMovieDetails from "../stub-data/movie-details"
+import StubMovieCast from "../stub-data/movie-cast"
+import StubSimilarMovies from "../stub-data/similar-movies"
+import StubPersonDetails from "../stub-data/person-details"
+import StubPersonMovies from "../stub-data/person-movies"
+
+// Variable to set Online or Offiline state for the API calls
+// 1. Offline is good for ajusting the UI without making thousands of requests
+// 2. Online to test the funcionality of App
+const IS_OFFLINE = true
+
 const BASE_URL = "https://api.themoviedb.org/3"
 
 const headers = {
@@ -23,8 +37,23 @@ export const imageUri342 = (path) => (path ? "https://image.tmdb.org/t/p/w342" +
 
 export const imageUri185 = (path) => (path ? "https://image.tmdb.org/t/p/w185" + path : "")
 
+// id table at: https://developer.themoviedb.org/reference/person-details
+export const getStringFromGenderId = (genderId) => {
+    switch (parseInt(genderId)) {
+        case 0:
+            return "Not set / Not specified"
+        case 1:
+            return "Female"
+        case 2:
+            return "Male"
+        case 3:
+            return "Non-binary"
+    }
+}
+
+// Trending movies url: /trending/movie/day?language=en-US
 export const fetchTrendingMovies = async () => {
-    // Trending movies url: /trending/movie/day?language=en-US
+    if (IS_OFFLINE) return StubTrendingMovies.results
     try {
         const response = await axios.get(`${BASE_URL}/trending/movie/day?language=en-US`, {
             headers
@@ -37,8 +66,9 @@ export const fetchTrendingMovies = async () => {
     }
 }
 
+// Upcoming movies url: /movie/upcoming?language=en-US&page=1
 export const fetchUpcomingMovies = async () => {
-    // Upcoming movies url: /movie/upcoming?language=en-US&page=1
+    if (IS_OFFLINE) return StubUpcomingMovies.results
     try {
         const response = await axios.get(`${BASE_URL}/movie/upcoming?language=en&page=1`, {
             headers
@@ -51,8 +81,9 @@ export const fetchUpcomingMovies = async () => {
     }
 }
 
+// Top rated url: /movie/top_rated?language=en-US&page=1
 export const fetchTopRatedMovies = async () => {
-    // Top rated url: /movie/top_rated?language=en-US&page=1
+    if (IS_OFFLINE) return StubTopRatedMovies.results
     try {
         const response = await axios.get(`${BASE_URL}/movie/top_rated?language=en-US&page=1`, {
             headers
@@ -65,10 +96,12 @@ export const fetchTopRatedMovies = async () => {
     }
 }
 
+// Movie details url: https://api.themoviedb.org/3/movie/{movie_id}
 export const fetchMovieDetails = async (movieId) => {
-    // Movie details url: https://api.themoviedb.org/3/movie/{movie_id}
+    if (IS_OFFLINE) return StubMovieDetails
     try {
         const response = await axios.get(`${BASE_URL}/movie/${movieId}?language=en-US`, { headers })
+        console.log("MovieId: ", movieId)
         return response.data
     } catch (e) {
         const errorMessage = "Error to fetch movies details. " + e
@@ -77,8 +110,9 @@ export const fetchMovieDetails = async (movieId) => {
     }
 }
 
+// Movie credits url: https://api.themoviedb.org/3/movie/{movie_id}/credits
 export const fetchMovieCast = async (movieId) => {
-    // Movie credits url:  https://api.themoviedb.org/3/movie/{movie_id}/credits
+    if (IS_OFFLINE) return StubMovieCast.cast
     try {
         const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits?language=en-US`, {
             headers
@@ -91,8 +125,9 @@ export const fetchMovieCast = async (movieId) => {
     }
 }
 
+// Similar movies url: https://api.themoviedb.org/3/movie/{movie_id}/similar
 export const fetchSimilarMovies = async (movieId) => {
-    // Similar movies url:  https://api.themoviedb.org/3/movie/{movie_id}/similar
+    if (IS_OFFLINE) return StubSimilarMovies.results
     try {
         const response = await axios.get(`${BASE_URL}/movie/${movieId}/similar?language=en-US`, {
             headers
@@ -100,6 +135,39 @@ export const fetchSimilarMovies = async (movieId) => {
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch similar movies. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Person details url: https://api.themoviedb.org/3/person/{person_id}
+export const fetchPersonDetails = async (personId) => {
+    if (IS_OFFLINE) return StubPersonDetails
+    try {
+        const response = await axios.get(`${BASE_URL}/person/${personId}?language=en-US`, {
+            headers
+        })
+        return response.data
+    } catch (e) {
+        const errorMessage = "Error to fetch person details. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Person movie credits url: https://api.themoviedb.org/3/person/{person_id}/movie_credits
+export const fetchPersonMovies = async (personId) => {
+    if (IS_OFFLINE) return StubPersonMovies.cast
+    try {
+        const response = await axios.get(
+            `${BASE_URL}/person/${personId}/movie_credits?language=en-US`,
+            {
+                headers
+            }
+        )
+        return response.data.cast
+    } catch (e) {
+        const errorMessage = "Error to fetch person movie credits. " + e
         console.error(errorMessage)
         return new Error(errorMessage)
     }

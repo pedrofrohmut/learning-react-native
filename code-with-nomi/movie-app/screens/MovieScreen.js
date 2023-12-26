@@ -49,7 +49,7 @@ const MovieScreen = () => {
             {/* Image and buttons container */}
             <View className="relative">
                 <Image
-                    source={{ uri: imageUri500(movie.poster_path) }}
+                    source={{ uri: imageUri500(movie.poster_path) || fallbackMoviePoster }}
                     style={{ width: dimensions.width, height: dimensions.height * 0.55 }}
                 />
 
@@ -71,25 +71,25 @@ const MovieScreen = () => {
             {/* Movie Details */}
             <View style={{ marginTop: -80 }} className="mb-8">
                 {/* Title */}
-                <Text className="text-white text-3xl text-center font-bold tracking-widest mb-3">
+                <Text className="text-white text-4xl text-center font-bold tracking-widest mb-3">
                     {movie.original_title}
-                </Text>
-
-                {/* Status, release, runtime */}
-                <Text className="text-neutral-400 text-base font-semibold text-center mb-2">
-                    {`${movie.status} -
-                      ${getYearFromDate(movie.release_date)} -
-                      ${movie.runtime} min`}
                 </Text>
 
                 {/* Genres */}
                 {movie.genres && movie.genres.length > 0 && (
-                    <View className="flex-row items-center justify-center mb-4">
-                        <Text className="text-neutral-400 text-base text-center">
+                    <View className="flex-row items-center justify-center mb-2">
+                        <Text className="text-neutral-400 text-lg font-semibold text-center">
                             {movie.genres.map(({ name }) => name).join(" - ")}
                         </Text>
                     </View>
                 )}
+
+                {/* Status, release, runtime */}
+                <Text className="text-neutral-400 text-base text-center mb-4">
+                    {`${movie.status} - ${getYearFromDate(movie.release_date)} - ${
+                        movie.runtime
+                    } min`}
+                </Text>
 
                 {/* Description */}
                 <Text className="text-neutral-400 tracking-wide text-justify px-4">
@@ -104,7 +104,7 @@ const MovieScreen = () => {
             {similarMovies && similarMovies.length > 0 && (
                 <MovieList
                     title="Similar Movies"
-                    hideSeeAll={true}
+                    hideSeeAll
                     data={similarMovies}
                     navigation={navigation}
                 />

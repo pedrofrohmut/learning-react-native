@@ -40,14 +40,14 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                     >
                         <View className="mr-5">
                             <Image
-                                source={{ uri: imageUri185(item.poster_path) }}
+                                source={{ uri: imageUri185(item.poster_path) || fallbackMoviePoster }}
                                 className="rounded-3xl"
                                 style={{
                                     width: dimensions.width * 0.33,
                                     height: dimensions.height * 0.22
                                 }}
                             />
-                            <Text className="text-neutral-400">
+                            <Text className="text-neutral-400 text-center">
                                 {movieFmtd(item.original_title)}
                             </Text>
                         </View>
