@@ -1,8 +1,13 @@
 import axios from "axios"
 
-import { THEMOVIEDB_API_KEY } from "./secret"
+import { THEMOVIEDB_ACCESS_TOKEN } from "./secret"
 
 const BASE_URL = "https://api.themoviedb.org/3"
+
+const headers = {
+    accept: "application/json",
+    Authorization: `Bearer ${THEMOVIEDB_ACCESS_TOKEN}`
+}
 
 export const fallbackMoviePoster =
     "https://img.myloview.com/stickers/white-laptop-screen-with-hd-video-technology-icon-isolated-on-grey-background-abstract-circle-random-dots-vector-illustration-400-176057922.jpg"
@@ -21,9 +26,9 @@ export const imageUri185 = (path) => (path ? "https://image.tmdb.org/t/p/w185" +
 export const fetchTrendingMovies = async () => {
     // Trending movies url: /trending/movie/day?language=en-US
     try {
-        const response = await axios.get(
-            `${BASE_URL}/trending/movie/day?language=en-US&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/trending/movie/day?language=en-US`, {
+            headers
+        })
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch trending movies. " + e
@@ -35,9 +40,9 @@ export const fetchTrendingMovies = async () => {
 export const fetchUpcomingMovies = async () => {
     // Upcoming movies url: /movie/upcoming?language=en-US&page=1
     try {
-        const response = await axios.get(
-            `${BASE_URL}/movie/upcoming?language=en&page=1&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/movie/upcoming?language=en&page=1`, {
+            headers
+        })
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch upcoming movies. " + e
@@ -49,9 +54,9 @@ export const fetchUpcomingMovies = async () => {
 export const fetchTopRatedMovies = async () => {
     // Top rated url: /movie/top_rated?language=en-US&page=1
     try {
-        const response = await axios.get(
-            `${BASE_URL}/movie/top_rated?language=en-US&page=1&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/movie/top_rated?language=en-US&page=1`, {
+            headers
+        })
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch top rated movies. " + e
@@ -63,9 +68,7 @@ export const fetchTopRatedMovies = async () => {
 export const fetchMovieDetails = async (movieId) => {
     // Movie details url: https://api.themoviedb.org/3/movie/{movie_id}
     try {
-        const response = await axios.get(
-            `${BASE_URL}/movie/${movieId}?language=en-US&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/movie/${movieId}?language=en-US`, { headers })
         return response.data
     } catch (e) {
         const errorMessage = "Error to fetch movies details. " + e
@@ -77,9 +80,9 @@ export const fetchMovieDetails = async (movieId) => {
 export const fetchMovieCast = async (movieId) => {
     // Movie credits url:  https://api.themoviedb.org/3/movie/{movie_id}/credits
     try {
-        const response = await axios.get(
-            `${BASE_URL}/movie/${movieId}/credits?language=en-US&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits?language=en-US`, {
+            headers
+        })
         return response.data.cast
     } catch (e) {
         const errorMessage = "Error to fetch movies credits. " + e
@@ -91,9 +94,9 @@ export const fetchMovieCast = async (movieId) => {
 export const fetchSimilarMovies = async (movieId) => {
     // Similar movies url:  https://api.themoviedb.org/3/movie/{movie_id}/similar
     try {
-        const response = await axios.get(
-            `${BASE_URL}/movie/${movieId}/similar?language=en-US&api_key=${THEMOVIEDB_API_KEY}`
-        )
+        const response = await axios.get(`${BASE_URL}/movie/${movieId}/similar?language=en-US`, {
+            headers
+        })
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch similar movies. " + e
