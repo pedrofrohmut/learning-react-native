@@ -18,6 +18,7 @@ import {
     fetchSimilarMovies,
     imageUri500
 } from "../api/moviedb"
+import { getYearFromDate } from "../shared/utils"
 
 const dimensions = Dimensions.get("screen")
 
@@ -87,7 +88,7 @@ const MovieScreen = () => {
 
                 {/* Status, release, runtime */}
                 <Text className="text-neutral-400 text-base font-semibold text-center mb-2">
-                    {movie.status} - {movie.release_date} - {movie.runtime}
+                    {movie.status} - {getYearFromDate(movie.release_date)} - {`${movie.runtime} min`}
                 </Text>
 
                 {/* Genres */}
