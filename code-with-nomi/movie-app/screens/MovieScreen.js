@@ -11,6 +11,7 @@ import LoadingScreen from "./LoadingScreen"
 import { fetchMovieCast, fetchMovieDetails, fetchSimilarMovies, imageUri500 } from "../api/moviedb"
 import { getYearFromDate } from "../shared/utils"
 import FavoriteButton from "../components/shared/FavoriteButton"
+import LongText from "../components/shared/LongText"
 
 const dimensions = Dimensions.get("screen")
 
@@ -91,10 +92,10 @@ const MovieScreen = () => {
                     } min`}
                 </Text>
 
-                {/* Description */}
-                <Text className="text-neutral-400 tracking-wide text-justify px-4">
-                    {movie.overview}
-                </Text>
+                {/* Description / Overview */}
+                <View className="px-4">
+                    <LongText text={movie.overview} length={120} />
+                </View>
             </View>
 
             {/* Cast Members */}

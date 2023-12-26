@@ -32,13 +32,11 @@ const PersonScreen = () => {
     const personId = route.params.id
 
     useEffect(() => {
-        Promise.all([fetchPersonDetails(personId), fetchPersonMovies(personId)]).then(
-            (data) => {
-                setPerson(data[0])
-                setPersonMovies(data[1])
-                setIsLoading(false)
-            }
-        )
+        Promise.all([fetchPersonDetails(personId), fetchPersonMovies(personId)]).then((data) => {
+            setPerson(data[0])
+            setPersonMovies(data[1])
+            setIsLoading(false)
+        })
     }, [])
 
     if (isLoading) {

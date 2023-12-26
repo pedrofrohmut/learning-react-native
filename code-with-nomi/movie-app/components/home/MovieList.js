@@ -40,7 +40,9 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                     >
                         <View className="mr-5">
                             <Image
-                                source={{ uri: imageUri185(item.poster_path) || fallbackMoviePoster }}
+                                source={{
+                                    uri: imageUri185(item.poster_path) || fallbackMoviePoster
+                                }}
                                 className="rounded-3xl"
                                 style={{
                                     width: dimensions.width * 0.33,
