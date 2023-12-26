@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { Dimensions, Image, ScrollView, TouchableOpacity, View, Text } from "react-native"
-import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
-import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
+import { Dimensions, Image, ScrollView, View, Text } from "react-native"
 
-import { COLORS } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CircleShapeWrapper from "../components/shared/CircleShapeWrapper"
 import MovieList from "../components/home/MovieList"
 import BackButton from "../components/shared/BackButton"
 import LoadingScreen from "./LoadingScreen"
+import FavoriteButton from "../components/shared/FavoriteButton"
 
 const dimensions = Dimensions.get("screen")
 
@@ -35,12 +33,7 @@ const PersonScreen = () => {
             <CustomSafeAreaView>
                 <View className="flex-row items-center justify-between px-4 py-3">
                     <BackButton navigation={navigation} />
-
-                    {/* Favorite Btn */}
-                    <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
-                        {isFavorite && <FullHeartIcon size={35} color={COLORS.primary} />}
-                        {!isFavorite && <EmptyHeartIcon size={35} color={COLORS.primary} />}
-                    </TouchableOpacity>
+                    <FavoriteButton isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
                 </View>
 
                 {/* Image Wrapper and Shadow */}

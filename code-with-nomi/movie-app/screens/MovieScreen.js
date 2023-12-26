@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react"
-import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
+import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import { useNavigation, useRoute } from "@react-navigation/native"
-import { HeartIcon as EmptyHeartIcon } from "react-native-heroicons/outline"
-import { HeartIcon as FullHeartIcon } from "react-native-heroicons/solid"
 import { LinearGradient } from "expo-linear-gradient"
 
-import { COLORS } from "../shared/constants"
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import CastMembers from "../components/movie-list/CastMembers"
 import MovieList from "../components/home/MovieList"
 import BackButton from "../components/shared/BackButton"
 import LoadingScreen from "./LoadingScreen"
-import {
-    fetchMovieCast,
-    fetchMovieCredits,
-    fetchMovieDetails,
-    fetchSimilarMovies,
-    imageUri500
-} from "../api/moviedb"
+import { fetchMovieCast, fetchMovieDetails, fetchSimilarMovies, imageUri500 } from "../api/moviedb"
 import { getYearFromDate } from "../shared/utils"
+import FavoriteButton from "../components/shared/FavoriteButton"
 
 const dimensions = Dimensions.get("screen")
 
@@ -71,10 +63,7 @@ const MovieScreen = () => {
                 <CustomSafeAreaView style={{ position: "absolute", width: "100%" }}>
                     <View className="flex-row items-center justify-between px-4 py-3">
                         <BackButton navigation={navigation} />
-                        <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
-                            {isFavorite && <FullHeartIcon size={35} color={COLORS.primary} />}
-                            {!isFavorite && <EmptyHeartIcon size={35} color={COLORS.primary} />}
-                        </TouchableOpacity>
+                        <FavoriteButton isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
                     </View>
                 </CustomSafeAreaView>
             </View>
@@ -88,7 +77,9 @@ const MovieScreen = () => {
 
                 {/* Status, release, runtime */}
                 <Text className="text-neutral-400 text-base font-semibold text-center mb-2">
-                    {movie.status} - {getYearFromDate(movie.release_date)} - {`${movie.runtime} min`}
+                    {`${movie.status} -
+                      ${getYearFromDate(movie.release_date)} -
+                      ${movie.runtime} min`}
                 </Text>
 
                 {/* Genres */}
