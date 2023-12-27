@@ -1,28 +1,59 @@
 import { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { Dimensions, TextInput, TouchableOpacity, View } from "react-native"
+import { Dimensions, Keyboard, TextInput, TouchableOpacity, View } from "react-native"
 import { XMarkIcon } from "react-native-heroicons/solid"
 
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
 import BackButton from "../components/shared/BackButton"
 import SearchResults from "../components/search/SearchResults"
 import Loading from "../components/shared/Loading"
+import SearchKeywords from "../components/search/SearchKeywords"
+
+import { fetchSearchKeywords, fetchSearchResults } from "../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
 const SearchScreen = () => {
     const navigation = useNavigation()
 
-    const [text, setText] = useState("")
-    const [results, setResults] = useState([1, 2, 3, 4])
+    const [query, setQuery] = useState("")
+    const [results, setResults] = useState([])
+    const [keywords, setKeywords] = useState([])
 
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+
+    const clearInputAndResults = () => {
+        setQuery("")
+        setResults([])
+        setKeywords([])
+        Keyboard.dismiss()
+        setIsLoading(false)
+    }
+
+    const performSearch = () => {
+        if (query.length <= 2) return
+        setIsLoading(true)
+        Keyboard.dismiss()
+        fetchSearchResults(query).then((searchResults) => {
+            setResults(searchResults)
+            setIsLoading(false)
+        })
+    }
+
+    const handleKeywordSelect = (term) => {
+        setQuery(term)
+        performSearch()
+    }
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2000)
-    }, [])
+        if (query.length > 2) {
+            fetchSearchKeywords(query).then((searchKeywords) => {
+                setKeywords(searchKeywords)
+            })
+        } else {
+            setKeywords([])
+        }
+    }, [query])
 
     return (
         <View className="flex-1 bg-neutral-900">
@@ -31,26 +62,31 @@ const SearchScreen = () => {
                     <BackButton navigation={navigation} />
                 </View>
 
-                <View className="flex-row border border-neutral-500 rounded-full mx-3 mb-5">
+                <View className="flex-row border border-neutral-500 rounded-2xl mx-3 mt-3 mb-5">
                     {/* Search Input */}
                     <TextInput
                         placeholder="Search Movie"
                         placeholderTextColor="#888"
-                        className="text-white rounded-full flex-1 pl-5 pb-1 text-lg"
-                        value={text}
-                        onChangeText={(x) => setText(x)}
+                        className="flex-1 text-white rounded-full pl-5 pb-1 text-lg"
+                        value={query}
+                        onChangeText={(x) => setQuery(x)}
+                        onSubmitEditing={performSearch}
                     />
 
                     {/* Clear Search Btn */}
                     <TouchableOpacity
-                        className="rounded-full p-3 m-1 bg-neutral-500"
-                        onPress={() => setText("")}
+                        className="rounded-full p-3 m-1"
+                        onPress={() => clearInputAndResults()}
                     >
-                        <XMarkIcon size={25} color="white" />
+                        <XMarkIcon size={32} color="white" />
                     </TouchableOpacity>
                 </View>
 
                 {isLoading && <Loading />}
+
+                {!isLoading && results.length === 0 && (
+                    <SearchKeywords keywords={keywords} handleKeywordSelect={handleKeywordSelect} />
+                )}
 
                 {!isLoading && (
                     <SearchResults

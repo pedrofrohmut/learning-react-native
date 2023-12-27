@@ -1,7 +1,7 @@
 import { Image, TouchableOpacity, View } from "react-native"
 import { ScrollView, Text } from "react-native"
 import { strFmtBySize } from "../../shared/utils"
-import { MOVIE_NAME } from "../../shared/constants"
+import { fallbackMoviePoster, imageUri185 } from "../../api/moviedb"
 
 const SearchResults = ({ results, dimensions, navigation }) => {
     if (results.length === 0) {
@@ -23,6 +23,7 @@ const SearchResults = ({ results, dimensions, navigation }) => {
             <Text className="text-white text-lg font-semibold mb-3">
                 Results ({results.length})
             </Text>
+
             <View className="flex-row flex-wrap justify-between">
                 {results?.map((movie, index) => (
                     <TouchableOpacity
@@ -31,15 +32,15 @@ const SearchResults = ({ results, dimensions, navigation }) => {
                         className="mb-6"
                     >
                         <Image
-                            source={require("../../assets/images/moviePoster2.png")}
+                            source={{ uri: imageUri185(movie.poster_path) || fallbackMoviePoster }}
                             style={{
                                 width: dimensions.width * 0.44,
                                 height: dimensions.height * 0.3
                             }}
                             className="mb-1"
                         />
-                        <Text className="text-neutral-400 text-center">
-                            {strFmtBySize(MOVIE_NAME, 23)}
+                        <Text className="text-neutral-400 text-center w-44">
+                            {strFmtBySize(movie.original_title, 23)}
                         </Text>
                     </TouchableOpacity>
                 ))}

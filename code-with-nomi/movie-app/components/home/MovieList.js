@@ -8,9 +8,9 @@ import {
     View
 } from "react-native"
 
-import { COLORS, MOVIE_NAME } from "../../shared/constants"
+import { COLORS } from "../../shared/constants"
 import { movieFmtd } from "../../shared/utils"
-import { imageUri185 } from "../../api/moviedb"
+import { fallbackMoviePoster, imageUri185 } from "../../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 

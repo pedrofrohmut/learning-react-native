@@ -10,11 +10,13 @@ import StubMovieCast from "../stub-data/movie-cast"
 import StubSimilarMovies from "../stub-data/similar-movies"
 import StubPersonDetails from "../stub-data/person-details"
 import StubPersonMovies from "../stub-data/person-movies"
+import StubSearchMovie from "../stub-data/search-movie"
+import StubSearchKeyword from "../stub-data/search-keyword"
 
 // Variable to set Online or Offiline state for the API calls
 // 1. Offline is good for ajusting the UI without making thousands of requests
 // 2. Online to test the funcionality of App
-const IS_OFFLINE = true
+const IS_OFFLINE = false
 
 const BASE_URL = "https://api.themoviedb.org/3"
 
@@ -101,7 +103,6 @@ export const fetchMovieDetails = async (movieId) => {
     if (IS_OFFLINE) return StubMovieDetails
     try {
         const response = await axios.get(`${BASE_URL}/movie/${movieId}?language=en-US`, { headers })
-        console.log("MovieId: ", movieId)
         return response.data
     } catch (e) {
         const errorMessage = "Error to fetch movies details. " + e
@@ -168,6 +169,37 @@ export const fetchPersonMovies = async (personId) => {
         return response.data.cast
     } catch (e) {
         const errorMessage = "Error to fetch person movie credits. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Search Movie url: https://api.themoviedb.org/3/search/movie?query=fast&language=en-US&page=1
+export const fetchSearchResults = async (query) => {
+    if (IS_OFFLINE) return StubSearchMovie.results
+    try {
+        const response = await axios.get(
+            `${BASE_URL}/search/movie?query=${query}&language=en-US&page=1`,
+            { headers }
+        )
+        return response.data.results
+    } catch (e) {
+        const errorMessage = "Error to fetch search movie. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Search keyword url: https://api.themoviedb.org/3/search/keyword?query=fast&page=1
+export const fetchSearchKeywords = async (query) => {
+    if (IS_OFFLINE) return StubSearchKeyword.results
+    try {
+        const response = await axios.get(`${BASE_URL}/search/keyword?query=${query}&page=1`, {
+            headers
+        })
+        return response.data.results
+    } catch (e) {
+        const errorMessage = "Error to fetch search keyword. " + e
         console.error(errorMessage)
         return new Error(errorMessage)
     }
