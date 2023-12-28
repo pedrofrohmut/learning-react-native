@@ -3,7 +3,7 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { nameFmtd } from "../../shared/utils"
 import CircleShapeWrapper from "../shared/CircleShapeWrapper"
 
-import { fallbackPersonImage, imageUri185 } from "../../api/moviedb"
+import { imageUri185 } from "../../api/moviedb"
 
 const CastMembers = ({ cast, navigation }) => {
     return (
@@ -22,9 +22,11 @@ const CastMembers = ({ cast, navigation }) => {
                     >
                         <CircleShapeWrapper height={80} width={80}>
                             <Image
-                                source={{
-                                    uri: imageUri185(person.profile_path) || fallbackPersonImage
-                                }}
+                                source={
+                                    person.profile_path
+                                        ? { uri: imageUri185(person.profile_path) }
+                                        : require("../../assets/fallback-person-profile.png")
+                                }
                                 className="rounded-2xl h-24 w-20"
                             />
                         </CircleShapeWrapper>

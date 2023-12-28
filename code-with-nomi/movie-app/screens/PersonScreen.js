@@ -11,7 +11,6 @@ import LongText from "../components/shared/LongText"
 import LoadingScreen from "./LoadingScreen"
 
 import {
-    fallbackPersonImage,
     fetchPersonDetails,
     fetchPersonMovies,
     getStringFromGenderId,
@@ -65,9 +64,11 @@ const PersonScreen = () => {
                 >
                     <CircleShapeWrapper width={288} height={288}>
                         <Image
-                            source={{
-                                uri: imageUri500(person.profile_path) || fallbackPersonImage
-                            }}
+                            source={
+                                person.profile_path
+                                    ? { uri: imageUri500(person.profile_path) }
+                                    : require("../assets/fallback-person-profile.png")
+                            }
                             style={{
                                 width: dimensions.width * 0.74,
                                 height: dimensions.height * 0.43

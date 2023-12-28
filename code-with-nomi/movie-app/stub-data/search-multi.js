@@ -1,0 +1,583 @@
+export default {
+    page: 1,
+    results: [
+        {
+            adult: false,
+            backdrop_path: "/fK40VGYIm7hmKrLJ26fgPQU0qRG.jpg",
+            id: 149,
+            title: "Akira",
+            original_language: "ja",
+            original_title: "AKIRA",
+            overview:
+                "A secret military project endangers Neo-Tokyo when it turns a biker gang member into a rampaging psychic psychopath that only two teenagers and a group of psychics can stop.",
+            poster_path: "/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
+            media_type: "movie",
+            genre_ids: [16, 878, 28],
+            popularity: 42.61,
+            release_date: "1988-07-16",
+            video: false,
+            vote_average: 7.944,
+            vote_count: 3818
+        },
+        {
+            adult: false,
+            backdrop_path: "/qMyZLZV0v9ONQg6ri7U9WtD0EsY.jpg",
+            id: 404579,
+            title: "Akira",
+            original_language: "hi",
+            original_title: "Akira",
+            overview:
+                "Akira Sharma is your average Jane from Jodhpur. Early in life she sees an atrocity committed on a neighbour and learns to defend herself. And, a spitfire is born.",
+            poster_path: "/jU0gw5z6JrazhGOh4UfULKqt268.jpg",
+            media_type: "movie",
+            genre_ids: [28, 80, 53],
+            popularity: 7.346,
+            release_date: "2016-09-01",
+            video: false,
+            vote_average: 5.7,
+            vote_count: 38
+        },
+        {
+            adult: false,
+            id: 1157849,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 2.279,
+            gender: 2,
+            known_for_department: "Acting",
+            profile_path: "/zeXGSARcr4ws2I8JOUDiCUZyvF8.jpg",
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/fSFlM6V8dHTzoCgH1sxxYfRYYUd.jpg",
+                    id: 47854,
+                    title: "Legend of the Fist: The Return of Chen Zhen",
+                    original_language: "cn",
+                    original_title: "精武風雲",
+                    overview:
+                        "The Japanese forces occupy Shanghai and slowly start spreading terror in the city. Chen Zhen, who was presumed dead, returns to fight against the Japanese and put an end to their tyrannical rule.",
+                    poster_path: "/qT6KI2jNiskkB4VuNz4uN0ng4Ro.jpg",
+                    media_type: "movie",
+                    genre_ids: [18, 28, 36, 53],
+                    popularity: 12.419,
+                    release_date: "2010-09-01",
+                    video: false,
+                    vote_average: 6.934,
+                    vote_count: 320
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/2IJkJ0WNcO3dBbzQpbkQrkPFyOn.jpg",
+                    id: 436356,
+                    title: "High & Low The Movie",
+                    original_language: "ja",
+                    original_title: "HiGH&LOW THE MOVIE",
+                    overview:
+                        "S.W.O.R.D. Chiku is a devastated and dangerous town with 5 gangs - Sannoh Rengokai, White Rascals, Oya Kohkoh, Rude Boys and Daruma Ikka - fighting fiercely. The name S.W.O.R.D. comprises of the first letter in each of these gangs. Before these 5 gangs, the legendary Mugen gang dominated the town. Mugen and the Amamiya Brothers (who did not submit to Mugen) clashed and Mugen disbanded, but ...",
+                    poster_path: "/aa3THDYIUtzGduNUwONAQ5duROL.jpg",
+                    media_type: "movie",
+                    genre_ids: [28],
+                    popularity: 5.548,
+                    release_date: "2016-07-16",
+                    video: false,
+                    vote_average: 6.1,
+                    vote_count: 17
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/xPLRZYq0P0gVJ8YF2God5r5yIDd.jpg",
+                    id: 46127,
+                    name: "GTO",
+                    original_language: "ja",
+                    original_name: "GTO",
+                    overview:
+                        "Through the introduction of his friend Danma Ryuji, Onizuka Eikichi, the former legendary bike gang member, visits Meishu Academy to tend to the trees in the garden as a part-time gardener. Learning that Yoshikawa Noboru, a student in teacher Fuyutsuki Azusa’s class is being bullied by Uehara Kyoko and other classmates, Onizuka befriends and saves Yoshikawa. Seeing Onizuka’s unprecedented but visceral, powerful response to problem solving, the school’s president and principal, Sakurai Yoshiko, overrides resistance from her vice principal Uchiyamada Hiroshi and makes Onizuka a teacher. Onizuka goes on to tackle many issues as the teacher in charge of the most problematic class, Class 2-4. ",
+                    poster_path: "/lfPg2GC0FgZ63xghEmAWPRL3cp4.jpg",
+                    media_type: "tv",
+                    genre_ids: [18],
+                    popularity: 201.757,
+                    first_air_date: "2012-07-03",
+                    vote_average: 7.143,
+                    vote_count: 14,
+                    origin_country: ["JP"]
+                }
+            ]
+        },
+        {
+            adult: false,
+            backdrop_path: null,
+            id: 906407,
+            title: "Akira",
+            original_language: "en",
+            original_title: "Akira",
+            overview:
+                "The leader of a biker gang tries to save his kidnapped friend from a powerful supernatural experiment.",
+            poster_path: null,
+            media_type: "movie",
+            genre_ids: [28, 18, 9648],
+            popularity: 2.744,
+            release_date: "",
+            video: false,
+            vote_average: 0,
+            vote_count: 0
+        },
+        {
+            adult: false,
+            id: 2051184,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 2,
+            known_for_department: "Acting",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/h8ziFspc4Quj0suClkIoNeILqoO.jpg",
+                    id: 567617,
+                    title: "American Street Kid",
+                    original_language: "en",
+                    original_title: "American Street Kid",
+                    overview:
+                        "Filmmaker, Michael Leoni heads to the streets of LA to shine a light on the epidemic of homeless youth in America. Once inside their world he realizes he can no longer be an observer; every day is a matter of life or death and he'll do anything to get them off the streets.",
+                    poster_path: "/pS8YmFW8ZZksuwSGsvANwrOzh3x.jpg",
+                    media_type: "movie",
+                    genre_ids: [99, 18],
+                    popularity: 0.6,
+                    release_date: "2018-12-04",
+                    video: false,
+                    vote_average: 0,
+                    vote_count: 0
+                }
+            ]
+        },
+        {
+            adult: false,
+            backdrop_path: null,
+            id: 420499,
+            title: "Akira",
+            original_language: "kn",
+            original_title: "Akira",
+            overview:
+                "The film revolves around Akira, who is reminiscing his life, his trysts with love and how he turned out to be the responsible man that his businessman father he eventually wanted to be.",
+            poster_path: null,
+            media_type: "movie",
+            genre_ids: [10749, 18],
+            popularity: 1.538,
+            release_date: "2016-05-06",
+            video: false,
+            vote_average: 5,
+            vote_count: 3
+        },
+        {
+            adult: false,
+            id: 3234284,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Sound",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: null,
+                    id: 874065,
+                    title: "Rheme Maining Sources",
+                    original_language: "pt",
+                    original_title: "Rema nascentes",
+                    overview:
+                        "A place-specific film-excavation of Bixiga neiborhood – São Paulo. Choreography of forces that cross present time. Filmancy, clairvoyance is the vision of what is taking shape.",
+                    poster_path: "/kpTJamGok3LpPBz09lZILh3DCXu.jpg",
+                    media_type: "movie",
+                    genre_ids: [99],
+                    popularity: 0.6,
+                    release_date: "2021-09-06",
+                    video: false,
+                    vote_average: 0,
+                    vote_count: 0
+                }
+            ]
+        },
+        {
+            adult: false,
+            id: 1257353,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Acting",
+            profile_path: null,
+            known_for: []
+        },
+        {
+            adult: false,
+            id: 3864417,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Acting",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: null,
+                    id: 1071701,
+                    title: "Fate/Grand Order THE STAGE - The Grand Temple of Time: Solomon Ars Nova",
+                    original_language: "ja",
+                    original_title: "Fate/Grand Order THE STAGE -冠位時間神殿ソロモン- Ars Nova",
+                    overview:
+                        "Tasked with preventing the destruction of humanity, the Chaldea Security Organization observes an anomaly: the Near-Future Observation Lens: Sheba proved the extinction of humanity in 2019. Chaldea pinpoints space-time Singularities thought to be the cause of humanity’s extinction and executes a forbidden ceremony called Rayshifting, where mages are converted into Spiritrons and sent into the past to restore humanity.  Under the command of Romani Archaman and with the aid of numerous Servants, Ritsuka Fujimaru and Mash Kyrielight begin by restoring Singularity F: Flame Contaminated City, Fuyuki. From there, they make their way through seven Singularities, resolving each of them. And now, the path to the Final Singularity, Grand Temple of Time: Solomon, lies open, and the final battle against the King of Mages is underway.",
+                    poster_path: "/38PFCPjDOdnSCpT8hSgqM2B1gz7.jpg",
+                    media_type: "movie",
+                    genre_ids: [12, 18],
+                    popularity: 1.566,
+                    release_date: "2020-10-18",
+                    video: false,
+                    vote_average: 0,
+                    vote_count: 0
+                }
+            ]
+        },
+        {
+            adult: false,
+            id: 3857911,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Acting",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: null,
+                    id: 1069146,
+                    title: "Timidamente Amore",
+                    original_language: "it",
+                    original_title: "Timidamente Amore",
+                    overview: "Popularized by Il Signor Distruggere, an italian influencer",
+                    poster_path: "/hbJKMZxCbmV97ogdvfWuKZcVY01.jpg",
+                    media_type: "movie",
+                    genre_ids: [35],
+                    popularity: 0.6,
+                    release_date: "2018-12-19",
+                    video: false,
+                    vote_average: 0,
+                    vote_count: 0
+                }
+            ]
+        },
+        {
+            adult: false,
+            id: 2694529,
+            name: "AKIRA",
+            original_name: "AKIRA",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Writing",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/5qEOEZC9MprqpzTJNtcTqDcbo4C.jpg",
+                    id: 88047,
+                    name: "Ensemble Stars!",
+                    original_language: "ja",
+                    original_name: "あんさんぶるスターズ！",
+                    overview:
+                        'Yumenosaki Private Academy, a school located on a hill facing the ocean. Specializing in boys\' idol training, the school has a long history of producing generations of idols for the entertainment world out of the young men overbrimming with talents, like the shining stars in the sky. Due to "special circumstances," you are a transfer student at the school, as well as the only female student there. In fact, you are chosen to be the very first student of the "producer course," and your task is to produce these idols… We hope you will enjoy your journey with the idols you meet at the academy, as well as the vigorous ensemble that together you will make.',
+                    poster_path: "/6uUtcPYg5mPcFPGgfNNHrBlTzAN.jpg",
+                    media_type: "tv",
+                    genre_ids: [35, 16],
+                    popularity: 62.53,
+                    first_air_date: "2019-07-07",
+                    vote_average: 7.3,
+                    vote_count: 3,
+                    origin_country: ["JP"]
+                }
+            ]
+        },
+        {
+            adult: false,
+            id: 4222999,
+            name: "Akira",
+            original_name: "Akira",
+            media_type: "person",
+            popularity: 0.6,
+            gender: 0,
+            known_for_department: "Acting",
+            profile_path: null,
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/45He7gApNQyDbqCDjxew9BnHzjf.jpg",
+                    id: 153,
+                    title: "Lost in Translation",
+                    original_language: "en",
+                    original_title: "Lost in Translation",
+                    overview:
+                        "Two lost souls visiting Tokyo -- the young, neglected wife of a photographer and a washed-up movie star shooting a TV commercial -- find an odd solace and pensive freedom to be real in each other's company, away from their lives in America.",
+                    poster_path: "/wkSzJs7oMf8MIr9CQVICsvRfwA7.jpg",
+                    media_type: "movie",
+                    genre_ids: [18, 10749],
+                    popularity: 27.064,
+                    release_date: "2003-09-18",
+                    video: false,
+                    vote_average: 7.391,
+                    vote_count: 6833
+                }
+            ]
+        },
+        {
+            adult: false,
+            backdrop_path: null,
+            id: 219070,
+            name: "Akira Khan",
+            original_language: "ms",
+            original_name: "Akira Khan",
+            overview:
+                "Akira a Pakistani woman who fell in love with a Malay man named Raden. Due to their different ancestry and race, their love is hindered and had to marry secretly.",
+            poster_path: null,
+            media_type: "tv",
+            genre_ids: [18],
+            popularity: 2.01,
+            first_air_date: "2023-01-18",
+            vote_average: 0,
+            vote_count: 0,
+            origin_country: ["MY"]
+        },
+        {
+            adult: false,
+            backdrop_path: "/aiz3iXC1UlZwEIKOKa6EtcQzpeH.jpg",
+            id: 121544,
+            name: "Hamura Akira – Sekai de Mottomo Fuunna Tantei",
+            original_language: "ja",
+            original_name: "ハムラアキラ",
+            overview: "",
+            poster_path: "/aL2lE6zTseAUEgGaK4EtyOYfK5k.jpg",
+            media_type: "tv",
+            genre_ids: [9648, 80],
+            popularity: 5.489,
+            first_air_date: "2020-01-24",
+            vote_average: 7.5,
+            vote_count: 2,
+            origin_country: ["JP"]
+        },
+        {
+            adult: false,
+            backdrop_path: "/6U23SOcgjErOW321iNoBmxa2fiz.jpg",
+            id: 79224,
+            name: "Akira and Akira",
+            original_language: "ja",
+            original_name: "アキラとあきら",
+            overview:
+                "The story begins in April 1986 and is set during the days of the bubble economy. Kaidou Akira comes from a wealthy background and is the heir of a large company Tokai Yuusen. On the other hand, his genius classmate from the University of Tokyo, Yamazaki Akira had a tough life due to the bankruptcy of his father's company and having to run away from creditors but overcomes the odds to graduatefrom the top-notch school. The two are employed at the same bank and get caught in a battle lasting over 10 years which causes upheavals in their lives.",
+            poster_path: "/4kJvV2H1XeklypVhf4U2I0Ps9XN.jpg",
+            media_type: "tv",
+            genre_ids: [18],
+            popularity: 11.202,
+            first_air_date: "2017-07-09",
+            vote_average: 0,
+            vote_count: 0,
+            origin_country: ["JP"]
+        },
+        {
+            adult: false,
+            backdrop_path: "/2pQPEA7i6UH1isLrmbqRRv6tp4I.jpg",
+            id: 130600,
+            name: "Junkyouju Takatsuki Akira no Suisatsu",
+            original_language: "ja",
+            original_name: "准教授・高槻彰良の推察",
+            overview:
+                "Eight years ago, a boy who got lost in a festival surrounded by the suspicious light of blue lanterns. Everyone wears a mask and continues to dance silently. It was a festival that no one should ever enter-the boy meets his grandfather, who should have died there. \"Naoya, you couldn't come to such a place ...\" Naoya Fukamachi, who became a college student, lived with loneliness. Naoya has been able to understand people's lies since the day of the Blue Lantern Festival. When a person tells a lie, his voice is distorted and sounds strange.",
+            poster_path: "/2Lu8Mp3EmOPa8alSzMLLWy97zid.jpg",
+            media_type: "tv",
+            genre_ids: [9648, 18],
+            popularity: 9.537,
+            first_air_date: "2021-08-07",
+            vote_average: 5.2,
+            vote_count: 5,
+            origin_country: ["JP"]
+        },
+        {
+            adult: false,
+            id: 5026,
+            name: "Akira Kurosawa",
+            original_name: "Akira Kurosawa",
+            media_type: "person",
+            popularity: 11.531,
+            gender: 2,
+            known_for_department: "Directing",
+            profile_path: "/eGexa6MZ22T1MZxce1qR3RcAYaS.jpg",
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/qvZ91FwMq6O47VViAr8vZNQz3WI.jpg",
+                    id: 346,
+                    title: "Seven Samurai",
+                    original_language: "ja",
+                    original_title: "七人の侍",
+                    overview:
+                        "A samurai answers a village's request for protection after he falls on hard times. The town needs protection from bandits, so the samurai gathers six others to help him teach the people how to defend themselves, and the villagers provide the soldiers with food.",
+                    poster_path: "/8OKmBV5BUFzmozIC3pPWKHy17kx.jpg",
+                    media_type: "movie",
+                    genre_ids: [28, 18],
+                    popularity: 38.482,
+                    release_date: "1954-04-26",
+                    video: false,
+                    vote_average: 8.458,
+                    vote_count: 3336
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/zyO6j74DKMWfp5snWg6Hwo0T3Mz.jpg",
+                    id: 548,
+                    title: "Rashomon",
+                    original_language: "ja",
+                    original_title: "羅生門",
+                    overview:
+                        'Brimming with action while incisively examining the nature of truth, "Rashomon" is perhaps the finest film ever to investigate the philosophy of justice. Through an ingenious use of camera and flashbacks, Kurosawa reveals the complexities of human nature as four people recount different versions of the story of a man\'s murder and the rape of his wife.',
+                    poster_path: "/vL7Xw04nFMHwnvXRFCmYYAzMUvY.jpg",
+                    media_type: "movie",
+                    genre_ids: [80, 18, 9648],
+                    popularity: 20.032,
+                    release_date: "1950-08-26",
+                    video: false,
+                    vote_average: 8.121,
+                    vote_count: 1999
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/gfR3GEClL7WrNpQOg8mcPhM8fx6.jpg",
+                    id: 11645,
+                    title: "Ran",
+                    original_language: "ja",
+                    original_title: "乱",
+                    overview:
+                        "With Ran, legendary director Akira Kurosawa reimagines Shakespeare's King Lear as a singular historical epic set in sixteenth-century Japan. Majestic in scope, the film is Kurosawa's late-life masterpiece, a profound examination of the folly of war and the crumbling of one family under the weight of betrayal, greed, and the insatiable thirst for power.",
+                    poster_path: "/jQnUtWaHYfqnXPOIf77K7Ycqk4M.jpg",
+                    media_type: "movie",
+                    genre_ids: [28, 18, 36],
+                    popularity: 22.772,
+                    release_date: "1985-06-01",
+                    video: false,
+                    vote_average: 8.073,
+                    vote_count: 1397
+                }
+            ]
+        },
+        {
+            adult: false,
+            backdrop_path: null,
+            id: 370671,
+            title: "Akira's Hip Hop Shop",
+            original_language: "en",
+            original_title: "Akira's Hip Hop Shop",
+            overview:
+                'Asian man. Black woman. Two people from different worlds bond over rap, food and friendship. A hip-hop "When Harry Met Sally". "Save the Last Dance" meets "Tampopo."',
+            poster_path: "/3oZJYaE94Aqg0reyrTqp8vh3fob.jpg",
+            media_type: "movie",
+            genre_ids: [10749, 18, 35],
+            popularity: 2.744,
+            release_date: "2007-06-21",
+            video: false,
+            vote_average: 2,
+            vote_count: 1
+        },
+        {
+            adult: false,
+            backdrop_path: "/5KxxKiwIKqDK424522nNx7TaRHe.jpg",
+            id: 202379,
+            name: "Keishicho Kyokohan Gakari Higuchi Akira",
+            original_language: "ja",
+            original_name: "警視庁強行犯係・樋口顕",
+            overview: "",
+            poster_path: "/m6DfsGWMLF5QvQcCVxrXFGeWZX9.jpg",
+            media_type: "tv",
+            genre_ids: [80, 10751, 9648],
+            popularity: 39.088,
+            first_air_date: "2021-01-15",
+            vote_average: 10,
+            vote_count: 1,
+            origin_country: ["JP"]
+        },
+        {
+            adult: false,
+            id: 2258733,
+            name: "Akira Akbar",
+            original_name: "Akira Akbar",
+            media_type: "person",
+            popularity: 6.704,
+            gender: 1,
+            known_for_department: "Acting",
+            profile_path: "/4h4MsWOx5hFysgycsKfOn1z6DBJ.jpg",
+            known_for: [
+                {
+                    adult: false,
+                    backdrop_path: "/qAzYK4YPSWDc7aa4R43LcwRIAyb.jpg",
+                    id: 299537,
+                    title: "Captain Marvel",
+                    original_language: "en",
+                    original_title: "Captain Marvel",
+                    overview:
+                        "The story follows Carol Danvers as she becomes one of the universe’s most powerful heroes when Earth is caught in the middle of a galactic war between two alien races. Set in the 1990s, Captain Marvel is an all-new adventure from a previously unseen period in the history of the Marvel Cinematic Universe.",
+                    poster_path: "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+                    media_type: "movie",
+                    genre_ids: [28, 12, 878],
+                    popularity: 83.69,
+                    release_date: "2019-03-06",
+                    video: false,
+                    vote_average: 6.837,
+                    vote_count: 14882
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/y6FYAhaeFMj9Lsk8OdF2NeWQkbd.jpg",
+                    id: 615677,
+                    title: "We Can Be Heroes",
+                    original_language: "en",
+                    original_title: "We Can Be Heroes",
+                    overview:
+                        "When alien invaders capture Earth's superheroes, their kids must learn to work together to save their parents - and the planet.",
+                    poster_path: "/1S21HpcKY6uQ9UAw68aICmrJaq6.jpg",
+                    media_type: "movie",
+                    genre_ids: [10751, 28, 14, 35],
+                    popularity: 44.58,
+                    release_date: "2020-12-25",
+                    video: false,
+                    vote_average: 6.1,
+                    vote_count: 715
+                },
+                {
+                    adult: false,
+                    backdrop_path: "/929XdVflzbgQWtKFDOnak3saK0R.jpg",
+                    id: 107365,
+                    name: "Bel-Air",
+                    original_language: "en",
+                    original_name: "Bel-Air",
+                    overview:
+                        "The journey of a book smart teen whose life is forever transformed when he moves from the streets of west Philadelphia to live with his relatives in one of LA’s wealthiest suburbs.",
+                    poster_path: "/c2K7cYixUApPJnkleU1weed3uuO.jpg",
+                    media_type: "tv",
+                    genre_ids: [18],
+                    popularity: 39.738,
+                    first_air_date: "2022-02-13",
+                    vote_average: 7.9,
+                    vote_count: 176,
+                    origin_country: ["US"]
+                }
+            ]
+        }
+    ],
+    total_pages: 50,
+    total_results: 998
+}

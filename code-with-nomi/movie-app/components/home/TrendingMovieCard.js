@@ -9,7 +9,11 @@ const TrendingMovieCard = ({ movie, navigation, dimensions }) => (
         }}
     >
         <Image
-            source={{ uri: imageUri500(movie.poster_path) || fallbackMoviePoster }}
+            source={
+                movie.poster_path
+                    ? { uri: imageUri500(movie.poster_path) }
+                    : require("../../assets/fallback-movie-poster.jpg")
+            }
             style={{
                 width: dimensions.width * 0.6,
                 height: dimensions.height * 0.4

@@ -50,7 +50,11 @@ const MovieScreen = () => {
             {/* Image and buttons container */}
             <View className="relative">
                 <Image
-                    source={{ uri: imageUri500(movie.poster_path) || fallbackMoviePoster }}
+                    source={
+                        movie.poster_path
+                            ? { uri: imageUri500(movie.poster_path) }
+                            : require("../assets/fallback-movie-poster.jpg")
+                    }
                     style={{ width: dimensions.width, height: dimensions.height * 0.55 }}
                 />
 

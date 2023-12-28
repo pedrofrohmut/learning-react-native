@@ -9,7 +9,7 @@ import SearchResults from "../components/search/SearchResults"
 import Loading from "../components/shared/Loading"
 import SearchKeywords from "../components/search/SearchKeywords"
 
-import { fetchSearchKeywords, fetchSearchResults } from "../api/moviedb"
+import { fetchSearchKeywords, fetchSearchMulti } from "../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
@@ -31,10 +31,10 @@ const SearchScreen = () => {
     }
 
     const performSearch = () => {
-        if (query.length <= 2) return
+        if (!query || query.length <= 2) return
         setIsLoading(true)
         Keyboard.dismiss()
-        fetchSearchResults(query).then((searchResults) => {
+        fetchSearchMulti(query).then((searchResults) => {
             setResults(searchResults)
             setIsLoading(false)
         })
@@ -70,7 +70,7 @@ const SearchScreen = () => {
                         className="flex-1 text-white rounded-full pl-5 pb-1 text-lg"
                         value={query}
                         onChangeText={(x) => setQuery(x)}
-                        onSubmitEditing={performSearch}
+                        onSubmitEditing={() => performSearch()}
                     />
 
                     {/* Clear Search Btn */}
@@ -84,7 +84,7 @@ const SearchScreen = () => {
 
                 {isLoading && <Loading />}
 
-                {!isLoading && results.length === 0 && (
+                {!isLoading && results?.length === 0 && (
                     <SearchKeywords keywords={keywords} handleKeywordSelect={handleKeywordSelect} />
                 )}
 

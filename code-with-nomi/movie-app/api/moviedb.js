@@ -12,6 +12,7 @@ import StubPersonDetails from "../stub-data/person-details"
 import StubPersonMovies from "../stub-data/person-movies"
 import StubSearchMovie from "../stub-data/search-movie"
 import StubSearchKeyword from "../stub-data/search-keyword"
+import StubSearchMulti from "../stub-data/search-multi"
 
 // Variable to set Online or Offiline state for the API calls
 // 1. Offline is good for ajusting the UI without making thousands of requests
@@ -28,7 +29,7 @@ const headers = {
 export const fallbackMoviePoster =
     "https://img.myloview.com/stickers/white-laptop-screen-with-hd-video-technology-icon-isolated-on-grey-background-abstract-circle-random-dots-vector-illustration-400-176057922.jpg"
 
-export const fallbackPersonImage =
+export const fallbackPersonProfile =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUiF-YGjavA63_Au8jQj7zxnFxS_Ay9xc6pxleMqCxH92SzeNSjBTwZ0l61E4B3KTS7o&usqp=CAU"
 
 export const imageUriOriginal = (path) => (path ? "https://image.tmdb.org/t/p/original" + path : "")
@@ -175,7 +176,7 @@ export const fetchPersonMovies = async (personId) => {
 }
 
 // Search Movie url: https://api.themoviedb.org/3/search/movie?query=fast&language=en-US&page=1
-export const fetchSearchResults = async (query) => {
+export const fetchSearchMovies = async (query) => {
     if (IS_OFFLINE) return StubSearchMovie.results
     try {
         const response = await axios.get(
@@ -200,6 +201,21 @@ export const fetchSearchKeywords = async (query) => {
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch search keyword. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Search multi url: https://api.themoviedb.org/3/search/multi?query=fast&page=1
+export const fetchSearchMulti = async (query) => {
+    if (IS_OFFLINE) return StubSearchMulti.results
+    try {
+        const response = await axios.get(`${BASE_URL}/search/multi?query=${query}&page=1`, {
+            headers
+        })
+        return response.data.results
+    } catch (e) {
+        const errorMessage = "Error to fetch search multi. " + e
         console.error(errorMessage)
         return new Error(errorMessage)
     }

@@ -10,7 +10,7 @@ import {
 
 import { COLORS } from "../../shared/constants"
 import { movieFmtd } from "../../shared/utils"
-import { fallbackMoviePoster, imageUri185 } from "../../api/moviedb"
+import { imageUri185 } from "../../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
@@ -33,16 +33,18 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                 showsHorizontalScrollIndicator
                 contentContainerStyle={{ paddingHorizontal: 15 }}
             >
-                {data.map((item, index) => (
+                {data.map((movie, index) => (
                     <TouchableWithoutFeedback
                         key={index}
-                        onPress={() => navigation.push("MovieScreen", item)}
+                        onPress={() => navigation.push("MovieScreen", movie)}
                     >
                         <View className="mr-5">
                             <Image
-                                source={{
-                                    uri: imageUri185(item.poster_path) || fallbackMoviePoster
-                                }}
+                                source={
+                                    movie.poster_path
+                                        ? { uri: imageUri185(movie.poster_path) }
+                                        : require("../../assets/fallback-movie-poster.jpg")
+                                }
                                 className="rounded-3xl"
                                 style={{
                                     width: dimensions.width * 0.33,
@@ -50,7 +52,7 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                                 }}
                             />
                             <Text className="text-neutral-400 text-center">
-                                {movieFmtd(item.original_title)}
+                                {movieFmtd(movie.original_title)}
                             </Text>
                         </View>
                     </TouchableWithoutFeedback>
