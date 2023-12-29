@@ -26,6 +26,8 @@ Tutorial: Movie catalog app
 
 - [Axios](https://github.com/axios/axios)
 
+- [Expo Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
+
 ### Styles
 
 - [Tailwindcss Docs](https://v2.tailwindcss.com/docs)

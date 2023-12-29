@@ -1,14 +1,17 @@
 TODO
 
+>> 28-12-2023
+
 [X] 1. add the lists to HomeScreen:
     [X] 1.1 Movies -> Popular
     [-] 1.2 Movies -> Now Playing (This list is not as expected. Mission Aborted)
 
-[ ] 2. Add cached values for the Lists. Since they are updated once a day there is
-no need to fetch them every time.
+[X] 2. Add cached values for the Lists (HomeScreen). Since they are updated once
+a day there is no need to fetch them every time.
 
-[ ] 3. Later look for cache for other resources too. Like last person clicked, last
+[-] 3. Later look for cache for other resources too. Like last person clicked, last
 search made (offer to see last search button on SearchScreen), last movie clicked
+(Not much value in cache for anything but HomeScreen. Mission Aborted)
 
 [ ] 4. Test if the cache is being invalidated correctly and test if the list are
 using the cache and not fetching the API every time
@@ -19,7 +22,9 @@ using the cache and not fetching the API every time
 
 [ ] 7. Add footer for TMDB API credits and Dev name
 
-[ ] 8. List of the genres, so user can look for stuff by clicking in one genre.
+>> 29-12-2023
+
+[ ] 1. List of the genres, so user can look for stuff by clicking in one genre.
 Using the url: https://api.themoviedb.org/3/genre/movie/list
 
-[ ] 9. Make a search for content based on a Person: person.movie_credits + person.tv_credits
+[ ] 2. Make a search for content based on a Person: person.movie_credits + person.tv_credits

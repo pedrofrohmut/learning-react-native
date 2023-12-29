@@ -1,6 +1,8 @@
 import axios from "axios"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import { THEMOVIEDB_ACCESS_TOKEN } from "./secret"
+import { STORAGE, CACHE_EXPIRATION, BASE_URL, IS_OFFLINE } from "../shared/constants"
 
 import StubTrendingMovies from "../stub-data/trending-movies"
 import StubUpcomingMovies from "../stub-data/upcoming-movies"
@@ -21,13 +23,6 @@ import StubSearchMulti from "../stub-data/search-multi"
 import StubTvShowDetails from "../stub-data/tv-details"
 import StubTvShowCast from "../stub-data/tv-cast"
 import StubSimilarTvShows from "../stub-data/tv-similar"
-
-// Variable to set Online or Offiline state for the API calls
-// 1. Offline is good for ajusting the UI without making thousands of requests
-// 2. Online to test the funcionality of App
-const IS_OFFLINE = true
-
-const BASE_URL = "https://api.themoviedb.org/3"
 
 const headers = {
     accept: "application/json",
@@ -62,13 +57,52 @@ export const getStringFromGenderId = (genderId) => {
     }
 }
 
+const getCacheIfNotExpired = async (key, expiration) => {
+    const unparsedData = await AsyncStorage.getItem(key)
+    if (!unparsedData) return null
+
+    const cacheLastUpdate = await AsyncStorage.getItem(STORAGE.lastUpdate)
+    if (!cacheLastUpdate) return null
+
+    const now = new Date().getTime()
+    const isExpired = now - parseInt(cacheLastUpdate) > expiration
+    if (isExpired) return null
+
+    const cache = JSON.parse(unparsedData)
+    return cache
+}
+
+const updateCacheExpirationToNow = async () => {
+    AsyncStorage.setItem(STORAGE.lastUpdate, new Date().getTime().toString())
+}
+
+const setItemToStorage = async (key, data) => {
+    if (!data) return
+    AsyncStorage.setItem(key, JSON.stringify(data))
+}
+
 // Trending movies url: /trending/movie/day?language=en-US
 export const fetchTrendingMovies = async () => {
+    // Offline stub
     if (IS_OFFLINE) return StubTrendingMovies.results
+
+    // Cache check
+    const cache = await getCacheIfNotExpired(STORAGE.trendingMovies, CACHE_EXPIRATION)
+    if (cache !== null) {
+        console.log("TrendingMovies - Returning from cache")
+        return cache.results
+    }
+
+    // Fetch if is online and has no valid cache
     try {
         const response = await axios.get(`${BASE_URL}/trending/movie/day?language=en-US`, {
             headers
         })
+
+        await setItemToStorage(STORAGE.trendingMovies, response.data)
+        await updateCacheExpirationToNow()
+        console.log("TrendingMovies - Returning from fetch")
+
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch trending movies. " + e
@@ -79,11 +113,26 @@ export const fetchTrendingMovies = async () => {
 
 // Upcoming movies url: /movie/upcoming?language=en-US&page=1
 export const fetchUpcomingMovies = async () => {
+    // Offiline stub
     if (IS_OFFLINE) return StubUpcomingMovies.results
+
+    // Check cache
+    const cache = await getCacheIfNotExpired(STORAGE.upcomingMovies, CACHE_EXPIRATION)
+    if (cache !== null) {
+        console.log("UpcomingMovies - Returning from cache")
+        return cache.results
+    }
+
+    // Fetch from API If is not offline and there is no cache
     try {
         const response = await axios.get(`${BASE_URL}/movie/upcoming?language=en&page=1`, {
             headers
         })
+
+        await setItemToStorage(STORAGE.upcomingMovies, response.data)
+        await updateCacheExpirationToNow()
+        console.log("UpcomingMovies - Returning from fetch")
+
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch upcoming movies. " + e
@@ -95,10 +144,22 @@ export const fetchUpcomingMovies = async () => {
 // Top rated url: /movie/top_rated?language=en-US&page=1
 export const fetchTopRatedMovies = async () => {
     if (IS_OFFLINE) return StubTopRatedMovies.results
+
+    const cache = await getCacheIfNotExpired(STORAGE.topRatedMovies, CACHE_EXPIRATION)
+    if (cache !== null) {
+        console.log("TopRatedMovies - Returning from cache")
+        return cache.results
+    }
+
     try {
         const response = await axios.get(`${BASE_URL}/movie/top_rated?language=en-US&page=1`, {
             headers
         })
+
+        await setItemToStorage(STORAGE.topRatedMovies, response.data)
+        await updateCacheExpirationToNow()
+        console.log("TopRatedMovies - Returning from fetch")
+
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch top rated movies. " + e
@@ -110,10 +171,22 @@ export const fetchTopRatedMovies = async () => {
 // Popular movies url: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 export const fetchPopularMovies = async () => {
     if (IS_OFFLINE) return StubPopularMovies.results
+
+    const cache = await getCacheIfNotExpired(STORAGE.popularMovies, CACHE_EXPIRATION)
+    if (cache !== null) {
+        console.log("PopularMovies - Returning from cache")
+        return cache.results
+    }
+
     try {
         const response = await axios.get(`${BASE_URL}/movie/popular?language=en-US&page=1`, {
             headers
         })
+
+        await setItemToStorage(STORAGE.popularMovies, response.data)
+        await updateCacheExpirationToNow()
+        console.log("PopularMovies - Returning from fetch")
+
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch popular movies. " + e
