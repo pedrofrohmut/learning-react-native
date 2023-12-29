@@ -24,10 +24,9 @@ const HomeScreen = () => {
     useEffect(() => {
         Promise.all([fetchTrendingMovies(), fetchUpcomingMovies(), fetchTopRatedMovies()]).then(
             (data) => {
-                const [trendingMovies, upcomingMovies, topRatedMovies] = data
-                setTrending(trendingMovies)
-                setUpcoming(upcomingMovies)
-                setTopRated(topRatedMovies)
+                setTrending(data[0])
+                setUpcoming(data[1])
+                setTopRated(data[2])
                 setIsLoading(false)
             }
         )

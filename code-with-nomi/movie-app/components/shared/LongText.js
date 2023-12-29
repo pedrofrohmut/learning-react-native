@@ -6,6 +6,17 @@ const hideLongText = (text, length) => `${text.slice(0, length)}...`
 
 const LongText = ({ text, length }) => {
     const [isFull, setIsFull] = useState(false)
+
+    if (!text || text.length < length) {
+        return (
+            <View>
+                <Text className="text-neutral-400 tracking-wide mb-3 text-justify">
+                    {text ? text : "Text not provided"}
+                </Text>
+            </View>
+        )
+    }
+
     return (
         <View>
             <Text className="text-neutral-400 tracking-wide mb-3 text-justify">

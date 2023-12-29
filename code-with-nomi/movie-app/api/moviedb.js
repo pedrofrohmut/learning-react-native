@@ -13,6 +13,9 @@ import StubPersonMovies from "../stub-data/person-movies"
 import StubSearchMovie from "../stub-data/search-movie"
 import StubSearchKeyword from "../stub-data/search-keyword"
 import StubSearchMulti from "../stub-data/search-multi"
+import StubTvShowDetails from "../stub-data/tv-details"
+import StubTvShowCast from "../stub-data/tv-cast"
+import StubSimilarTvShows from "../stub-data/tv-similar"
 
 // Variable to set Online or Offiline state for the API calls
 // 1. Offline is good for ajusting the UI without making thousands of requests
@@ -216,6 +219,48 @@ export const fetchSearchMulti = async (query) => {
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch search multi. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Tv show details url: https://api.themoviedb.org/3/tv/219070?language=en-US
+export const fetchTvShowDetails = async (seriesId) => {
+    if (IS_OFFLINE) return StubTvShowDetails
+    try {
+        const response = await axios.get(`${BASE_URL}/tv/${seriesId}?language=en-US`, { headers })
+        return response.data
+    } catch (e) {
+        const errorMessage = "Error to fetch tv show details. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+// Tv show cast url: https://api.themoviedb.org/3/tv/121544/credits?language=en-US
+export const fetchTvShowCast = async (seriesId) => {
+    if (IS_OFFLINE) return StubTvShowCast.cast
+    try {
+        const response = await axios.get(`${BASE_URL}/tv/${seriesId}/credits?language=en-US`, {
+            headers
+        })
+        return response.data
+    } catch (e) {
+        const errorMessage = "Error to fetch tv show cast. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Tv show similar url: https://api.themoviedb.org/3/tv/series_id/similar?language=en-US&page=1
+export const fetchSimilarTvShows = async (seriesId) => {
+    if (IS_OFFLINE) return StubSimilarTvShows.results
+    try {
+        const response = await axios.get(`${BASE_URL}/tv/${seriesId}/similar?language=en-US`, {
+            headers
+        })
+        return response.data
+    } catch (e) {
+        const errorMessage = "Error to fetch tv show cast. " + e
         console.error(errorMessage)
         return new Error(errorMessage)
     }

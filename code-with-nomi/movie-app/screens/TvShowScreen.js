@@ -3,39 +3,45 @@ import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { LinearGradient } from "expo-linear-gradient"
 
-import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
-import CastMembers from "../components/movie-list/CastMembers"
-import MovieList from "../components/home/MovieList"
-import BackButton from "../components/shared/BackButton"
 import LoadingScreen from "./LoadingScreen"
-import { fetchMovieCast, fetchMovieDetails, fetchSimilarMovies, imageUri500 } from "../api/moviedb"
-import { getYearFromDate } from "../shared/utils"
+import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
+import BackButton from "../components/shared/BackButton"
 import FavoriteButton from "../components/shared/FavoriteButton"
 import LongText from "../components/shared/LongText"
+import CastMembers from "../components/movie-list/CastMembers"
+import TvShowList from "../components/shared/TvShowList"
+
+import { getYearFromDate } from "../shared/utils"
+import {
+    fetchSimilarTvShows,
+    fetchTvShowCast,
+    fetchTvShowDetails,
+    imageUri500
+} from "../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
 
-const MovieScreen = () => {
+const TvShowScreen = () => {
     const navigation = useNavigation()
 
     const route = useRoute()
-    const movieId = route.params.id
+    const seriesId = route.params.id
 
     const [isLoading, setIsLoading] = useState(true)
     const [isFavorite, setIsFavorite] = useState(false)
-    const [movie, setMovie] = useState(null)
+    const [tvShow, setTvShow] = useState(null)
     const [cast, setCast] = useState([])
-    const [similarMovies, setSimilarMovies] = useState([])
+    const [similar, setSimilar] = useState([])
 
     useEffect(() => {
         Promise.all([
-            fetchMovieDetails(movieId),
-            fetchMovieCast(movieId),
-            fetchSimilarMovies(movieId)
+            fetchTvShowDetails(seriesId),
+            fetchTvShowCast(seriesId),
+            fetchSimilarTvShows(seriesId)
         ]).then((data) => {
-            setMovie(data[0])
+            setTvShow(data[0])
             setCast(data[1])
-            setSimilarMovies(data[2])
+            setSimilar(data[2])
             setIsLoading(false)
         })
     }, [])
@@ -47,11 +53,11 @@ const MovieScreen = () => {
     return (
         <ScrollView className="flex-1 bg-neutral-900">
             {/* Image and buttons container */}
-            <View className="relative">
+            <View>
                 <Image
                     source={
-                        movie.poster_path
-                            ? { uri: imageUri500(movie.poster_path) }
+                        tvShow.poster_path
+                            ? { uri: imageUri500(tvShow.poster_path) }
                             : require("../assets/fallback-movie-poster.jpg")
                     }
                     style={{ width: dimensions.width, height: dimensions.height * 0.55 }}
@@ -72,44 +78,48 @@ const MovieScreen = () => {
                 </CustomSafeAreaView>
             </View>
 
-            {/* Movie Details */}
+            {/* Tv Show Details */}
             <View style={{ marginTop: -80 }} className="mb-8">
-                {/* Title */}
+                {/* Name */}
                 <Text className="text-white text-4xl text-center font-bold tracking-widest mb-3">
-                    {movie.original_title}
+                    {tvShow.name}
                 </Text>
 
                 {/* Genres */}
-                {movie.genres && movie.genres.length > 0 && (
+                {tvShow.genres && tvShow.genres.length > 0 && (
                     <View className="flex-row items-center justify-center mb-2">
                         <Text className="text-neutral-400 text-lg font-semibold text-center">
-                            {movie.genres.map(({ name }) => name).join(" - ")}
+                            {tvShow.genres.map(({ name }) => name).join(" - ")}
                         </Text>
                     </View>
                 )}
 
                 {/* Status, release, runtime */}
                 <Text className="text-neutral-400 text-base text-center mb-4">
-                    {`${movie.status} - ${getYearFromDate(movie.release_date)} - ${
-                        movie.runtime
-                    } min`}
+                    {`${tvShow.status} - ${
+                        tvShow.seasons[0]?.air_date
+                            ? getYearFromDate(tvShow.seasons[0].air_date)
+                            : "Unknown"
+                    } - ${
+                        tvShow.last_air_date ? getYearFromDate(tvShow.last_air_date) : "Unknown"
+                    }`}
                 </Text>
 
                 {/* Description / Overview */}
                 <View className="px-4">
-                    <LongText text={movie.overview} length={120} />
+                    <LongText text={tvShow.overview || "Discription not provided"} length={120} />
                 </View>
             </View>
 
             {/* Cast Members */}
             {cast && cast.length > 0 && <CastMembers cast={cast} navigation={navigation} />}
 
-            {/* Similar Movies */}
-            {similarMovies && similarMovies.length > 0 && (
-                <MovieList
-                    title="Similar Movies"
+            {/* Similar Tv Shows */}
+            {similar && similar.length > 0 && (
+                <TvShowList
+                    title="Similar Tv Shows"
                     hideSeeAll
-                    data={similarMovies}
+                    data={similar}
                     navigation={navigation}
                 />
             )}
@@ -117,4 +127,4 @@ const MovieScreen = () => {
     )
 }
 
-export default MovieScreen
+export default TvShowScreen
