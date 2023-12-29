@@ -10,7 +10,12 @@ import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
 import MovieList from "../components/home/MovieList"
 import Loading from "../components/shared/Loading"
 
-import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from "../api/moviedb"
+import {
+    fetchPopularMovies,
+    fetchTopRatedMovies,
+    fetchTrendingMovies,
+    fetchUpcomingMovies
+} from "../api/moviedb"
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -18,18 +23,23 @@ const HomeScreen = () => {
     const [trending, setTrending] = useState([])
     const [upcoming, setUpcoming] = useState([])
     const [topRated, setTopRated] = useState([])
+    const [popular, setPopular] = useState([])
 
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        Promise.all([fetchTrendingMovies(), fetchUpcomingMovies(), fetchTopRatedMovies()]).then(
-            (data) => {
-                setTrending(data[0])
-                setUpcoming(data[1])
-                setTopRated(data[2])
-                setIsLoading(false)
-            }
-        )
+        Promise.all([
+            fetchTrendingMovies(),
+            fetchUpcomingMovies(),
+            fetchTopRatedMovies(),
+            fetchPopularMovies()
+        ]).then((data) => {
+            setTrending(data[0])
+            setUpcoming(data[1])
+            setTopRated(data[2])
+            setPopular(data[3])
+            setIsLoading(false)
+        })
     }, [])
 
     return (
@@ -62,6 +72,9 @@ const HomeScreen = () => {
 
                         {/* Top Rated Movies */}
                         <MovieList title="Top Rated" data={topRated} navigation={navigation} />
+
+                        {/* Popular Movies */}
+                        <MovieList title="Popular Movies" data={popular} navigation={navigation} />
                     </ScrollView>
                 )}
             </CustomSafeAreaView>

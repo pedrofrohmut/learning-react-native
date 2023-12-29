@@ -5,14 +5,19 @@ import { THEMOVIEDB_ACCESS_TOKEN } from "./secret"
 import StubTrendingMovies from "../stub-data/trending-movies"
 import StubUpcomingMovies from "../stub-data/upcoming-movies"
 import StubTopRatedMovies from "../stub-data/top-rated-movies"
+import StubPopularMovies from "../stub-data/popular-movies"
+
 import StubMovieDetails from "../stub-data/movie-details"
 import StubMovieCast from "../stub-data/movie-cast"
 import StubSimilarMovies from "../stub-data/similar-movies"
+
 import StubPersonDetails from "../stub-data/person-details"
 import StubPersonMovies from "../stub-data/person-movies"
+
 import StubSearchMovie from "../stub-data/search-movie"
 import StubSearchKeyword from "../stub-data/search-keyword"
 import StubSearchMulti from "../stub-data/search-multi"
+
 import StubTvShowDetails from "../stub-data/tv-details"
 import StubTvShowCast from "../stub-data/tv-cast"
 import StubSimilarTvShows from "../stub-data/tv-similar"
@@ -20,7 +25,7 @@ import StubSimilarTvShows from "../stub-data/tv-similar"
 // Variable to set Online or Offiline state for the API calls
 // 1. Offline is good for ajusting the UI without making thousands of requests
 // 2. Online to test the funcionality of App
-const IS_OFFLINE = false
+const IS_OFFLINE = true
 
 const BASE_URL = "https://api.themoviedb.org/3"
 
@@ -97,6 +102,21 @@ export const fetchTopRatedMovies = async () => {
         return response.data.results
     } catch (e) {
         const errorMessage = "Error to fetch top rated movies. " + e
+        console.error(errorMessage)
+        return new Error(errorMessage)
+    }
+}
+
+// Popular movies url: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
+export const fetchPopularMovies = async () => {
+    if (IS_OFFLINE) return StubPopularMovies.results
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/popular?language=en-US&page=1`, {
+            headers
+        })
+        return response.data.results
+    } catch (e) {
+        const errorMessage = "Error to fetch popular movies. " + e
         console.error(errorMessage)
         return new Error(errorMessage)
     }

@@ -18,3 +18,8 @@ the cache and not fetching the API every time
 6. Add login with tmdb user
 
 7. Add footer for TMDB API credits and Dev name
+
+8. List of the genres, so user can look for stuff by clicking in one genre.
+Using the url: https://api.themoviedb.org/3/genre/movie/list
+
+9. Make a search for content based on a Person: person.movie_credits + person.tv_credits
