@@ -58,7 +58,7 @@ const MovieScreen = () => {
                 />
 
                 <LinearGradient
-                    colors={["transparent", "#0008", "#000a", "#000e"]}
+                    colors={["transparent", "#000a", "#000"]}
                     style={{ width: "100%", height: dimensions.height * 0.48 }}
                     className="absolute bottom-0"
                 />
@@ -73,32 +73,32 @@ const MovieScreen = () => {
             </View>
 
             {/* Movie Details */}
-            <View style={{ marginTop: -80 }} className="mb-8">
+            <View style={{ marginTop: -100 }} className="mb-8 bg-[#0007] py-3 px-1">
                 {/* Title */}
                 <Text className="text-white text-4xl text-center font-bold tracking-widest mb-3">
-                    {movie.original_title}
+                    {movie.title}
                 </Text>
 
                 {/* Genres */}
                 {movie.genres && movie.genres.length > 0 && (
                     <View className="flex-row items-center justify-center mb-2">
-                        <Text className="text-neutral-400 text-lg font-semibold text-center">
+                        <Text className="text-neutral-400 text-base font-semibold text-center">
                             {movie.genres.map(({ name }) => name).join(" - ")}
                         </Text>
                     </View>
                 )}
 
                 {/* Status, release, runtime */}
-                <Text className="text-neutral-400 text-base text-center mb-4">
+                <Text className="text-neutral-400 text-sm text-center mb-4">
                     {`${movie.status} - ${getYearFromDate(movie.release_date)} - ${
                         movie.runtime
                     } min`}
                 </Text>
+            </View>
 
-                {/* Description / Overview */}
-                <View className="px-4">
-                    <LongText text={movie.overview} length={120} />
-                </View>
+            {/* Description / Overview */}
+            <View className="px-4 mb-5">
+                <LongText text={movie.overview} length={120} />
             </View>
 
             {/* Cast Members */}

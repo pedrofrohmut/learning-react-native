@@ -7,7 +7,7 @@ import { imageUri185 } from "../../api/moviedb"
 
 const CastMembers = ({ cast, navigation }) => {
     return (
-        <View className="mb-12">
+        <View className="mb-8">
             <Text className="text-white text-lg px-4 mb-5">Top Cast</Text>
             <ScrollView
                 horizontal

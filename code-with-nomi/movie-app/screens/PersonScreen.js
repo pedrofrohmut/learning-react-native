@@ -62,7 +62,7 @@ const PersonScreen = () => {
                         shadowOpacity: 1
                     }}
                 >
-                    <CircleShapeWrapper width={288} height={288}>
+                    <CircleShapeWrapper width={228} height={228}>
                         <Image
                             source={
                                 person.profile_path
@@ -88,26 +88,26 @@ const PersonScreen = () => {
                 </View>
 
                 {/* Highlights */}
-                <View className="mx-3 py-4 px-6 mt-6 flex-row items-center justify-evenly bg-neutral-700 rounded-full">
+                <View className="py-4 mt-6 flex-row items-center justify-evenly">
                     <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
-                        <Text className="text-white font-semibold">Gender</Text>
-                        <Text className="text-neutral-300 text-sm">
+                        <Text className="text-neutral-400 font-semibold text-xs">Gender</Text>
+                        <Text className="text-neutral-300 text-xs">
                             {getStringFromGenderId(person.gender)}
                         </Text>
                     </View>
                     <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
-                        <Text className="text-white font-semibold">Birthday</Text>
-                        <Text className="text-neutral-300 text-sm">{person.birthday}</Text>
+                        <Text className="text-neutral-400 font-semibold text-xs">Birthday</Text>
+                        <Text className="text-neutral-300 text-xs">{person.birthday}</Text>
                     </View>
                     <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
-                        <Text className="text-white font-semibold">Know for</Text>
-                        <Text className="text-neutral-300 text-sm">
+                        <Text className="text-neutral-400 font-semibold text-xs">Know for</Text>
+                        <Text className="text-neutral-300 text-xs">
                             {person.known_for_department}
                         </Text>
                     </View>
                     <View className="px-2 flex-col items-center justify-center">
-                        <Text className="text-white font-semibold">Popularity</Text>
-                        <Text className="text-neutral-300 text-sm">{person.popularity}</Text>
+                        <Text className="text-neutral-400 font-semibold text-xs">Popularity</Text>
+                        <Text className="text-neutral-300 text-xs">{person.popularity}</Text>
                     </View>
                 </View>
 
@@ -119,7 +119,12 @@ const PersonScreen = () => {
 
                 {/* Movies */}
                 {personMovies && personMovies.length > 0 && (
-                    <MovieList title="Movies" hideSeeAll data={personMovies} />
+                    <MovieList
+                        title="Movies"
+                        hideSeeAll
+                        data={personMovies}
+                        navigation={navigation}
+                    />
                 )}
             </CustomSafeAreaView>
         </ScrollView>

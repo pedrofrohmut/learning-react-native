@@ -22,12 +22,13 @@ const SearchScreen = () => {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const clearInputAndResults = () => {
+    const clearAndGoHome = () => {
         setQuery("")
         setResults([])
         setKeywords([])
         Keyboard.dismiss()
         setIsLoading(false)
+        navigation.navigate("HomeScreen")
     }
 
     const performSearch = () => {
@@ -58,11 +59,7 @@ const SearchScreen = () => {
     return (
         <View className="flex-1 bg-neutral-900">
             <CustomSafeAreaView>
-                <View className="flex-row px-4 py-3">
-                    <BackButton navigation={navigation} />
-                </View>
-
-                <View className="flex-row border border-neutral-500 rounded-2xl mx-3 mt-3 mb-5">
+                <View className="flex-row border border-neutral-500 rounded-2xl mx-3 mt-3 mb-2">
                     {/* Search Input */}
                     <TextInput
                         placeholder="Search Movie"
@@ -76,7 +73,7 @@ const SearchScreen = () => {
                     {/* Clear Search Btn */}
                     <TouchableOpacity
                         className="rounded-full p-3 m-1"
-                        onPress={() => clearInputAndResults()}
+                        onPress={() => clearAndGoHome()}
                     >
                         <XMarkIcon size={32} color="white" />
                     </TouchableOpacity>
@@ -84,7 +81,7 @@ const SearchScreen = () => {
 
                 {isLoading && <Loading />}
 
-                {!isLoading && results?.length === 0 && (
+                {!isLoading && results?.length === 0 && keywords.length > 0 && (
                     <SearchKeywords keywords={keywords} handleKeywordSelect={handleKeywordSelect} />
                 )}
 

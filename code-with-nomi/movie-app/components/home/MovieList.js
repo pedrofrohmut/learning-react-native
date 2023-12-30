@@ -9,7 +9,7 @@ import {
 } from "react-native"
 
 import { COLORS } from "../../shared/constants"
-import { movieFmtd } from "../../shared/utils"
+import { movieFmtd, strFmtBySize } from "../../shared/utils"
 import { imageUri185 } from "../../api/moviedb"
 
 const dimensions = Dimensions.get("screen")
@@ -31,28 +31,29 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
             <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator
-                contentContainerStyle={{ paddingHorizontal: 15 }}
+                contentContainerStyle={{ paddingHorizontal: 14 }}
+                className=""
             >
                 {data.map((movie, index) => (
                     <TouchableWithoutFeedback
                         key={index}
                         onPress={() => navigation.push("MovieScreen", movie)}
                     >
-                        <View className="mr-5">
+                        <View className="flex-col items-center mx-1">
                             <Image
                                 source={
                                     movie.poster_path
                                         ? { uri: imageUri185(movie.poster_path) }
                                         : require("../../assets/fallback-movie-poster.jpg")
                                 }
-                                className="rounded-3xl"
+                                className="rounded-2xl mb-1"
                                 style={{
                                     width: dimensions.width * 0.33,
                                     height: dimensions.height * 0.22
                                 }}
                             />
-                            <Text className="text-neutral-400 text-center">
-                                {movieFmtd(movie.original_title)}
+                            <Text className="text-neutral-400 text-sm text-center w-32">
+                                {strFmtBySize(movie.title, 30)}
                             </Text>
                         </View>
                     </TouchableWithoutFeedback>

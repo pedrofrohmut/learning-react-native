@@ -66,13 +66,16 @@ const MovieCard = ({ movie, navigation, dimensions }) => (
                     : require("../../assets/fallback-movie-poster.jpg")
             }
             style={{
-                width: dimensions.width * 0.44,
+                width: dimensions.width * 0.42,
                 height: dimensions.height * 0.3
             }}
-            className="mb-1"
+            className="mb-2"
         />
-        <Text className="text-neutral-400 text-center w-44">
-            Movie: {movie.original_title ? strFmtBySize(movie.original_title, 23) : "NO TITLE"}
+        <Text
+            className="text-neutral-400 text-center"
+            style={{ width: dimensions.width * 0.42 }}
+        >
+            Movie: {movie.title ? strFmtBySize(movie.title, 23) : "NO TITLE"}
         </Text>
     </TouchableOpacity>
 )
@@ -90,12 +93,15 @@ const PersonCard = ({ person, navigation, dimensions }) => (
                     : require("../../assets/fallback-person-profile.png")
             }
             style={{
-                width: dimensions.width * 0.44,
+                width: dimensions.width * 0.42,
                 height: dimensions.height * 0.3
             }}
             className="mb-1"
         />
-        <Text className="text-neutral-400 text-center w-44">
+        <Text
+            className="text-neutral-400 text-center"
+            style={{ width: dimensions.width * 0.42 }}
+        >
             Person: {person.name ? strFmtBySize(person.name, 23) : "NO NAME"}
         </Text>
     </TouchableOpacity>
@@ -114,12 +120,15 @@ const TvCard = ({ tv, navigation, dimensions }) => (
                     : require("../../assets/fallback-movie-poster.jpg")
             }
             style={{
-                width: dimensions.width * 0.44,
+                width: dimensions.width * 0.42,
                 height: dimensions.height * 0.3
             }}
             className="mb-1"
         />
-        <Text className="text-neutral-400 text-center w-44">
+        <Text
+            className="text-neutral-400 text-center"
+            style={{ width: dimensions.width * 0.42 }}
+        >
             TVShow: {tv.name ? strFmtBySize(tv.name, 23) : "NO NAME"}
         </Text>
     </TouchableOpacity>
