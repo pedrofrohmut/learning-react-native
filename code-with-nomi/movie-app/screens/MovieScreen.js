@@ -73,9 +73,9 @@ const MovieScreen = () => {
             </View>
 
             {/* Movie Details */}
-            <View style={{ marginTop: -100 }} className="mb-8 bg-[#0007] py-3 px-1">
+            <View style={{ marginTop: -70 }} className="mb-8 bg-[#0008] py-3 px-1">
                 {/* Title */}
-                <Text className="text-white text-4xl text-center font-bold tracking-widest mb-3">
+                <Text className="text-white text-xl text-center font-bold tracking-widest mb-3">
                     {movie.title}
                 </Text>
 

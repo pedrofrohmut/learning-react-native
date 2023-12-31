@@ -6,7 +6,7 @@ import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons
 import { COLORS } from "../shared/constants"
 
 import CustomSafeAreaView from "../components/shared/CustomSafeAreaView"
-import TrendingMoviesCarousel from "../components/home/TrendingMoviesCarousel"
+import TrendingMoviesSlider from "../components/home/TrendingMoviesSlider"
 import MovieList from "../components/home/MovieList"
 import Loading from "../components/shared/Loading"
 
@@ -69,8 +69,8 @@ const HomeScreen = () => {
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={{ paddingBottom: 10 }}
                     >
-                        {/* Trending Movies Carousel */}
-                        <TrendingMoviesCarousel movies={trending} navigation={navigation} />
+                        {/* Trending Carousel: New Lib */}
+                        <TrendingMoviesSlider movies={trending} navigation={navigation} />
 
                         {/* Upcoming Movies */}
                         <MovieList title="Upcoming" data={upcoming} navigation={navigation} />

@@ -26,7 +26,7 @@ const SearchResults = ({ results, dimensions, navigation }) => {
 
             <View className="flex-row flex-wrap justify-between">
                 {results?.map((result) => (
-                    <>
+                    <View key={result.id}>
                         {result.media_type === "movie" && (
                             <MovieCard
                                 movie={result}
@@ -46,7 +46,7 @@ const SearchResults = ({ results, dimensions, navigation }) => {
                         {result.media_type === "tv" && (
                             <TvCard tv={result} navigation={navigation} dimensions={dimensions} />
                         )}
-                    </>
+                    </View>
                 ))}
             </View>
         </ScrollView>

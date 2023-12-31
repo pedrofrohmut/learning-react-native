@@ -13,7 +13,7 @@ a day there is no need to fetch them every time.
 search made (offer to see last search button on SearchScreen), last movie clicked
 (Not much value in cache for anything but HomeScreen. Mission Aborted)
 
-[ ] 4. Test if the cache is being invalidated correctly and test if the list are
+[X] 4. Test if the cache is being invalidated correctly and test if the list are
 using the cache and not fetching the API every time
 
 [ ] 5. Add support for languages
@@ -33,3 +33,10 @@ Using the url: https://api.themoviedb.org/3/genre/movie/list
 
 [ ] 1. Make See All links from MovieList work: make the funcionality and create a
 results page
+
+>> 31/12/2023
+
+[X] 1. Replace ReactNativeSnapCaroussel by a Custom Component
+
+[ ] 2. Checkout the lib "https://github.com/dohooo/react-native-reanimated-carousel"
+for the carousel component

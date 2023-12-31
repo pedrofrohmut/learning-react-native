@@ -91,13 +91,13 @@ export const isCacheExpired = async (expiration) => {
 // Trending movies url: /trending/movie/day?language=en-US
 export const fetchTrendingMovies = async () => {
     // Offline stub
-    if (IS_OFFLINE) return StubTrendingMovies.results.slice(0, 11)
+    if (IS_OFFLINE) return StubTrendingMovies.results.slice(0, 19)
 
     // Cache check
     const cache = await getCacheIfNotExpired(STORAGE.trendingMovies, CACHE_EXPIRATION)
     if (cache !== null) {
         console.log("TrendingMovies - Returning from cache")
-        return cache.results.slice(0, 11)
+        return cache.results.slice(0, 19)
     }
 
     // Fetch if is online and has no valid cache
@@ -110,7 +110,7 @@ export const fetchTrendingMovies = async () => {
         await updateCacheExpirationToNow()
         console.log("TrendingMovies - Returning from fetch")
 
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch trending movies. " + e
         console.error(errorMessage)
@@ -121,13 +121,13 @@ export const fetchTrendingMovies = async () => {
 // Upcoming movies url: /movie/upcoming?language=en-US&page=1
 export const fetchUpcomingMovies = async () => {
     // Offiline stub
-    if (IS_OFFLINE) return StubUpcomingMovies.results.slice(0, 11)
+    if (IS_OFFLINE) return StubUpcomingMovies.results.slice(0, 19)
 
     // Check cache
     const cache = await getCacheIfNotExpired(STORAGE.upcomingMovies, CACHE_EXPIRATION)
     if (cache !== null) {
         console.log("UpcomingMovies - Returning from cache")
-        return cache.results.slice(0, 11)
+        return cache.results.slice(0, 19)
     }
 
     // Fetch from API If is not offline and there is no cache
@@ -140,7 +140,7 @@ export const fetchUpcomingMovies = async () => {
         await updateCacheExpirationToNow()
         console.log("UpcomingMovies - Returning from fetch")
 
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch upcoming movies. " + e
         console.error(errorMessage)
@@ -150,12 +150,12 @@ export const fetchUpcomingMovies = async () => {
 
 // Top rated url: /movie/top_rated?language=en-US&page=1
 export const fetchTopRatedMovies = async () => {
-    if (IS_OFFLINE) return StubTopRatedMovies.results.slice(0, 11)
+    if (IS_OFFLINE) return StubTopRatedMovies.results.slice(0, 19)
 
     const cache = await getCacheIfNotExpired(STORAGE.topRatedMovies, CACHE_EXPIRATION)
     if (cache !== null) {
         console.log("TopRatedMovies - Returning from cache")
-        return cache.results.slice(0, 11)
+        return cache.results.slice(0, 19)
     }
 
     try {
@@ -167,7 +167,7 @@ export const fetchTopRatedMovies = async () => {
         await updateCacheExpirationToNow()
         console.log("TopRatedMovies - Returning from fetch")
 
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch top rated movies. " + e
         console.error(errorMessage)
@@ -177,12 +177,12 @@ export const fetchTopRatedMovies = async () => {
 
 // Popular movies url: https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 export const fetchPopularMovies = async () => {
-    if (IS_OFFLINE) return StubPopularMovies.results.slice(0, 11)
+    if (IS_OFFLINE) return StubPopularMovies.results.slice(0, 19)
 
     const cache = await getCacheIfNotExpired(STORAGE.popularMovies, CACHE_EXPIRATION)
     if (cache !== null) {
         console.log("PopularMovies - Returning from cache")
-        return cache.results.slice(0, 11)
+        return cache.results.slice(0, 19)
     }
 
     try {
@@ -194,7 +194,7 @@ export const fetchPopularMovies = async () => {
         await updateCacheExpirationToNow()
         console.log("PopularMovies - Returning from fetch")
 
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch popular movies. " + e
         console.error(errorMessage)
@@ -232,12 +232,12 @@ export const fetchMovieCast = async (movieId) => {
 
 // Similar movies url: https://api.themoviedb.org/3/movie/{movie_id}/similar
 export const fetchSimilarMovies = async (movieId) => {
-    if (IS_OFFLINE) return StubSimilarMovies.results.slice(0, 11)
+    if (IS_OFFLINE) return StubSimilarMovies.results.slice(0, 19)
     try {
         const response = await axios.get(`${BASE_URL}/movie/${movieId}/similar?language=en-US`, {
             headers
         })
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch similar movies. " + e
         console.error(errorMessage)
@@ -262,7 +262,7 @@ export const fetchPersonDetails = async (personId) => {
 
 // Person movie credits url: https://api.themoviedb.org/3/person/{person_id}/movie_credits
 export const fetchPersonMovies = async (personId) => {
-    if (IS_OFFLINE) return StubPersonMovies.cast.slice(0, 11)
+    if (IS_OFFLINE) return StubPersonMovies.cast.slice(0, 19)
     try {
         const response = await axios.get(
             `${BASE_URL}/person/${personId}/movie_credits?language=en-US`,
@@ -270,7 +270,7 @@ export const fetchPersonMovies = async (personId) => {
                 headers
             }
         )
-        return response.data.cast.slice(0, 11)
+        return response.data.cast.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch person movie credits. " + e
         console.error(errorMessage)
@@ -296,12 +296,12 @@ export const fetchSearchMovies = async (query) => {
 
 // Search keyword url: https://api.themoviedb.org/3/search/keyword?query=fast&page=1
 export const fetchSearchKeywords = async (query) => {
-    if (IS_OFFLINE) return StubSearchKeyword.results.slice(0, 11)
+    if (IS_OFFLINE) return StubSearchKeyword.results.slice(0, 19)
     try {
         const response = await axios.get(`${BASE_URL}/search/keyword?query=${query}&page=1`, {
             headers
         })
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch search keyword. " + e
         console.error(errorMessage)
@@ -353,12 +353,12 @@ export const fetchTvShowCast = async (seriesId) => {
 
 // Tv show similar url: https://api.themoviedb.org/3/tv/series_id/similar?language=en-US&page=1
 export const fetchSimilarTvShows = async (seriesId) => {
-    if (IS_OFFLINE) return StubSimilarTvShows.results.slice(0, 11)
+    if (IS_OFFLINE) return StubSimilarTvShows.results.slice(0, 19)
     try {
         const response = await axios.get(`${BASE_URL}/tv/${seriesId}/similar?language=en-US`, {
             headers
         })
-        return response.data.results.slice(0, 11)
+        return response.data.results.slice(0, 19)
     } catch (e) {
         const errorMessage = "Error to fetch tv show cast. " + e
         console.error(errorMessage)

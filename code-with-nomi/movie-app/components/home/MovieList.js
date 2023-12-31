@@ -18,12 +18,10 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
     return (
         <View className="my-3">
             <View className="flex-row items-center justify-between px-4 mb-5">
-                <Text className="text-white text-xl">{title}</Text>
+                <Text className="text-neutral-200 text-xl font-light">{title}</Text>
                 {!hideSeeAll && (
                     <TouchableOpacity>
-                        <Text style={{ color: COLORS.primary }} className="text-lg">
-                            See all
-                        </Text>
+                        <Text style={{ color: COLORS.primary }} className="text-lg font-light">See all</Text>
                     </TouchableOpacity>
                 )}
             </View>
@@ -32,7 +30,6 @@ const MovieList = ({ title, data, navigation, hideSeeAll }) => {
                 horizontal
                 showsHorizontalScrollIndicator
                 contentContainerStyle={{ paddingHorizontal: 14 }}
-                className=""
             >
                 {data.map((movie, index) => (
                     <TouchableWithoutFeedback

@@ -89,22 +89,25 @@ const PersonScreen = () => {
 
                 {/* Highlights */}
                 <View className="py-4 mt-6 flex-row items-center justify-evenly">
-                    <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
+                    <View className="px-2 flex-col items-center justify-center">
                         <Text className="text-neutral-400 font-semibold text-xs">Gender</Text>
                         <Text className="text-neutral-300 text-xs">
                             {getStringFromGenderId(person.gender)}
                         </Text>
                     </View>
-                    <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
+                    <View className="border-l-2 border-neutral-400 h-full"></View>
+                    <View className="px-2 flex-col items-center justify-center">
                         <Text className="text-neutral-400 font-semibold text-xs">Birthday</Text>
                         <Text className="text-neutral-300 text-xs">{person.birthday}</Text>
                     </View>
-                    <View className="border-r-2 border-r-neutral-400 px-2 flex-col items-center justify-center">
+                    <View className="border-l-2 border-neutral-400 h-full"></View>
+                    <View className="px-2 flex-col items-center justify-center">
                         <Text className="text-neutral-400 font-semibold text-xs">Know for</Text>
                         <Text className="text-neutral-300 text-xs">
                             {person.known_for_department}
                         </Text>
                     </View>
+                    <View className="border-l-2 border-neutral-400 h-full"></View>
                     <View className="px-2 flex-col items-center justify-center">
                         <Text className="text-neutral-400 font-semibold text-xs">Popularity</Text>
                         <Text className="text-neutral-300 text-xs">{person.popularity}</Text>
