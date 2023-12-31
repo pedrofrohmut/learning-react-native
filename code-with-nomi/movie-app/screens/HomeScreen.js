@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { useNavigation } from "@react-navigation/native"
+import { useCallback, useState } from "react"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline"
 
@@ -27,20 +27,25 @@ const HomeScreen = () => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        Promise.all([
-            fetchTrendingMovies(),
-            fetchUpcomingMovies(),
-            fetchTopRatedMovies(),
-            fetchPopularMovies()
-        ]).then((data) => {
-            setTrending(data[0])
-            setUpcoming(data[1])
-            setTopRated(data[2])
-            setPopular(data[3])
-            setIsLoading(false)
-        })
-    }, [])
+    // From ReactNativeNavigation: gets called every time this screen gets focused
+    useFocusEffect(
+        useCallback(() => {
+            Promise.all([
+                fetchTrendingMovies(),
+                fetchUpcomingMovies(),
+                fetchTopRatedMovies(),
+                fetchPopularMovies()
+            ]).then((data) => {
+                setTrending(data[0])
+                setUpcoming(data[1])
+                setTopRated(data[2])
+                setPopular(data[3])
+                setIsLoading(false)
+            })
+            // Clean Up Function
+            return () => {}
+        }, [])
+    )
 
     return (
         <View className="flex-1 bg-neutral-900">

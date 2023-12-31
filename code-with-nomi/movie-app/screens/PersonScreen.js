@@ -62,7 +62,7 @@ const PersonScreen = () => {
                         shadowOpacity: 1
                     }}
                 >
-                    <CircleShapeWrapper width={228} height={228}>
+                    <CircleShapeWrapper width={278} height={278}>
                         <Image
                             source={
                                 person.profile_path
@@ -70,8 +70,8 @@ const PersonScreen = () => {
                                     : require("../assets/fallback-person-profile.png")
                             }
                             style={{
-                                width: dimensions.width * 0.74,
-                                height: dimensions.height * 0.43
+                                width: dimensions.width * 0.69,
+                                height: dimensions.height * 0.44
                             }}
                         />
                     </CircleShapeWrapper>

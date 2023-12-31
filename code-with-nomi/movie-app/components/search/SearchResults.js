@@ -71,10 +71,7 @@ const MovieCard = ({ movie, navigation, dimensions }) => (
             }}
             className="mb-2"
         />
-        <Text
-            className="text-neutral-400 text-center"
-            style={{ width: dimensions.width * 0.42 }}
-        >
+        <Text className="text-neutral-400 text-center" style={{ width: dimensions.width * 0.42 }}>
             Movie: {movie.title ? strFmtBySize(movie.title, 23) : "NO TITLE"}
         </Text>
     </TouchableOpacity>
@@ -98,10 +95,7 @@ const PersonCard = ({ person, navigation, dimensions }) => (
             }}
             className="mb-1"
         />
-        <Text
-            className="text-neutral-400 text-center"
-            style={{ width: dimensions.width * 0.42 }}
-        >
+        <Text className="text-neutral-400 text-center" style={{ width: dimensions.width * 0.42 }}>
             Person: {person.name ? strFmtBySize(person.name, 23) : "NO NAME"}
         </Text>
     </TouchableOpacity>
@@ -125,10 +119,7 @@ const TvCard = ({ tv, navigation, dimensions }) => (
             }}
             className="mb-1"
         />
-        <Text
-            className="text-neutral-400 text-center"
-            style={{ width: dimensions.width * 0.42 }}
-        >
+        <Text className="text-neutral-400 text-center" style={{ width: dimensions.width * 0.42 }}>
             TVShow: {tv.name ? strFmtBySize(tv.name, 23) : "NO NAME"}
         </Text>
     </TouchableOpacity>

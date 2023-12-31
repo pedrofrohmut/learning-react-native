@@ -81,6 +81,13 @@ const setItemToStorage = async (key, data) => {
     AsyncStorage.setItem(key, JSON.stringify(data))
 }
 
+export const isCacheExpired = async (expiration) => {
+    const now = new Date().getTime()
+    const lastUpdate = await AsyncStorage.getItem(STORAGE.lastUpdate)
+    const isExpired = now - parseInt(lastUpdate) > expiration
+    return isExpired
+}
+
 // Trending movies url: /trending/movie/day?language=en-US
 export const fetchTrendingMovies = async () => {
     // Offline stub

@@ -4,10 +4,7 @@ import { ChevronLeftIcon } from "react-native-heroicons/solid"
 
 const BackButton = ({ navigation }) => {
     return (
-        <TouchableOpacity
-            className=""
-            onPress={() => navigation.goBack()}
-        >
+        <TouchableOpacity className="" onPress={() => navigation.goBack()}>
             <View style={{ backgroundColor: COLORS.primary }} className="rounded-xl p-1">
                 <ChevronLeftIcon size={23} strokeWidth={2} color="white" />
             </View>
